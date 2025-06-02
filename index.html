@@ -11,8 +11,8 @@
         header { background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
         nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
-        nav .logo { display: flex; align-items: center; font-size: 1.5rem; font-weight: 600; color: #007acc; }
-        nav .logo img { height: 40px; margin-right: 0.75rem; }
+        nav .logo { display: flex; align-items: center; font-size: 1.8rem; font-weight: 600; color: #007acc; }
+        nav .logo img { height: 80px; margin-right: 1rem; }
         nav ul { list-style: none; display: flex; gap: 2rem; }
         nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
         nav ul li a:hover { color: #007acc; }
@@ -22,7 +22,7 @@
         #inicio .intro img.profile-photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 1.5rem; }
         #inicio .intro h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #007acc; }
         #inicio .intro p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: #555; }
-        #proyectos { background-color: #f0f4f8; }
+        #proyectos { background-color: #fff; }
         #proyectos .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .project-card { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; text-decoration: none; color: inherit; }
         .project-card:hover { transform: translateY(-5px); }
@@ -41,7 +41,8 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="logo.png" alt="Logo Adrian Vernis" />
+                    <img src="logo.png" alt="Logo Adrià Vernis" />
+                    <span>Adrià Vernis</span>
                 </div>
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
@@ -56,7 +57,7 @@
         <div class="container">
             <div class="intro">
                 <img src="foto.jpg" alt="Foto de Adrià Vernis" class="profile-photo" />
-                <h1>Hola, soy Adrià Vernis </h1>
+                <h1>Hola, soy Adrià Vernis</h1>
                 <p>Soy un Data Analyst y especialista en Business Intelligence. Me apasiona transformar datos en insights accionables usando Power BI, Python, SQL y herramientas de visualización.</p>
             </div>
         </div>
@@ -73,20 +74,20 @@
                         <p>Modelos predictivos en R con SHAP values y dashboard interactivo en Power BI.</p>
                     </div>
                 </a>
-                <div class="project-card">
+                <a href="proyecto2.html" target="_blank" class="project-card">
                     <img src="https://via.placeholder.com/400x200" alt="Proyecto 2" />
                     <div class="content">
                         <h3>Dashboards Comerciales</h3>
                         <p>Integración de Dynamics CRM con Power BI para analizar ventas y rentabilidad.</p>
                     </div>
-                </div>
-                <div class="project-card">
+                </a>
+                <a href="proyecto3.html" target="_blank" class="project-card">
                     <img src="https://via.placeholder.com/400x200" alt="Proyecto 3" />
                     <div class="content">
                         <h3>Yahoo Finance & SQL</h3>
                         <p>Extracción y análisis de datos bursátiles del S&P 500, visualización en Power BI.</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
