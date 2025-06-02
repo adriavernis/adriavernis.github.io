@@ -18,13 +18,13 @@
         nav ul { list-style: none; display: flex; gap: 2rem; }
         nav ul li a { text-decoration: none; color: #333; font-weight: 500; transition: color 0.3s; }
         nav ul li a:hover { color: #007acc; }
-        section { padding: 4rem 0; }
+        section { padding: 3rem 0; }
         #inicio { background-color: #eef6fc; }
-        #inicio .intro { text-align: center; padding: 4rem 1rem; }
-        #inicio .intro img.profile-photo { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 1.5rem; }
-        #inicio .intro h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #007acc; }
-        #inicio .intro .tagline { font-style: italic; color: #555; margin-bottom: 1rem; }
-        #inicio .intro p { font-size: 1.1rem; max-width: 800px; margin: 0 auto; color: #555; }
+        #inicio .intro { text-align: center; padding: 2rem 1rem; }
+        #inicio .intro img.profile-photo { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; margin-bottom: 1rem; }
+        #inicio .intro h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #007acc; }
+        #inicio .intro .tagline { font-style: italic; color: #555; margin-bottom: 0.5rem; }
+        #inicio .intro p { font-size: 1rem; max-width: 800px; margin: 0 auto; color: #555; }
         #proyectos { background-color: #fff; }
         #proyectos .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .project-card { background-color: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.3s; cursor: pointer; text-decoration: none; color: inherit; }
@@ -33,6 +33,11 @@
         .project-card .content { padding: 1.5rem; }
         .project-card .content h3 { margin-bottom: 0.5rem; color: #007acc; }
         .project-card .content p { color: #555; }
+        #herramientas { background-color: #f9f9f9; text-align: center; }
+        #herramientas h2 { color: #007acc; margin-bottom: 2rem; }
+        #herramientas .tools-logos { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        #herramientas .tools-logos img { width: 60px; height: 60px; transition: transform 0.3s; }
+        #herramientas .tools-logos img:hover { transform: scale(1.1); }
         #contacto { background-color: #eef6fc; }
         #contacto .contact-info { max-width: 600px; margin: 0 auto; text-align: center; display: flex; justify-content: center; gap: 2rem; }
         #contacto .contact-info a { display: inline-flex; align-items: center; transition: opacity 0.3s; }
@@ -71,27 +76,39 @@
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 2rem; color: #007acc;">Proyectos Destacados</h2>
             <div class="projects-grid">
-                <a href="proyecto1.html" target="_blank" class="project-card">
+                <a href="proyecto1.html" class="project-card">
                     <img src="https://via.placeholder.com/400x200" alt="Proyecto 1" />
                     <div class="content">
                         <h3>Análisis de Churn Bancario</h3>
                         <p>Modelos predictivos en R con SHAP values y dashboard interactivo en Power BI.</p>
                     </div>
                 </a>
-                <a href="proyecto2.html" target="_blank" class="project-card">
+                <a href="proyecto2.html" class="project-card">
                     <img src="https://via.placeholder.com/400x200" alt="Proyecto 2" />
                     <div class="content">
                         <h3>Dashboards Comerciales</h3>
                         <p>Integración de Dynamics CRM con Power BI para analizar ventas y rentabilidad.</p>
                     </div>
                 </a>
-                <a href="proyecto3.html" target="_blank" class="project-card">
+                <a href="proyecto3.html" class="project-card">
                     <img src="https://via.placeholder.com/400x200" alt="Proyecto 3" />
                     <div class="content">
                         <h3>Yahoo Finance & SQL</h3>
                         <p>Extracción y análisis de datos bursátiles del S&P 500, visualización en Power BI.</p>
                     </div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="herramientas">
+        <div class="container">
+            <h2>Herramientas</h2>
+            <div class="tools-logos">
+                <img src="sql.png" alt="SQL" />
+                <img src="python.png" alt="Python" />
+                <img src="r.png" alt="R" />
+                <img src="powerbi.png" alt="Power BI" />
             </div>
         </div>
     </section>
