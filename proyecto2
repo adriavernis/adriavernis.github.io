@@ -14,7 +14,8 @@
         section { margin-bottom: 2rem; }
         section h2 { color: #007acc; margin-bottom: 1rem; }
         h3 { color: #007acc; margin: 1rem 0 0.5rem; }
-        pre { background-color: #f4f4f4; padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.9rem; color: #333; }
+        pre { background-color: #f4f4f4; padding: 1rem; border-radius: 6px; overflow-x: auto; font-size: 0.9rem; color: #333; white-space: pre-wrap; }
+        code { font-family: 'Courier New', monospace; }
         img { width: 100%; max-width: 800px; display: block; margin: 1rem auto; border-radius: 4px; }
         .conclusion { background-color: #eef6fc; padding: 1rem; border-left: 4px solid #007acc; margin-top: 1rem; color: #333; }
         footer { text-align: center; color: #777; font-size: 0.85rem; margin-top: 2rem; }
@@ -99,13 +100,13 @@ ggplot(ventas_totales, aes(x = OrderDate, y = ventastotales)) +
   theme_minimal()
 
 # Agrupar datos por mes para análisis de tendencia
-
 datos_ventas$mes <- floor_date(datos_ventas$OrderDate, "month")
 ventasmes <- datos_ventas %>%
   group_by(mes) %>%
   summarise(ventas = sum(Sales))
 
-# Convertir a serie temporal y aplicar filtro HPentasmensuales <- ts(ventasmes$ventas, start = c(2011,5), frequency = 12)
+# Convertir a serie temporal y aplicar filtro HP
+ventasmensuales <- ts(ventasmes$ventas, start = c(2011,5), frequency = 12)
 descomposicion <- hpfilter(ventasmensuales, freq = 12)
 tendencia <- descomposicion$trend
 
@@ -156,11 +157,66 @@ productos_precio_medio %>%
     theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold"))
 
 # Distribución de precios por color
-unique(datos_productos$Color)
+datos_productos %>%
+  ggplot(aes(x = Color, y = UnitPrice)) +
+    geom_boxplot(fill = "#0098cd", alpha = 0.7) +
+    labs(x = "Color", y = "Precio unitario", title = "Distribución de precios por color") +
+    theme_minimal() +
+    theme(plot.title = element_text(hjust = 0.5))
+</code></pre>
+            <h3>Gráficos Obtenidos</h3>
+            <img src="precio_medio_producto.png" alt="Precio medio por producto" />
+            <img src="distribucion_precio_color.png" alt="Distribución de precios por color" />
+            <div class="conclusion">
+                <strong>Hallazgo:</strong> Se observa que los productos de color rojo, plata y amarillo tienden a tener precios más altos, mientras que los blancos presentan el precio promedio más bajo. El ANOVA confirma que el color influye significativamente en el precio (p-valor &lt; 0.05).
+            </div>
+        </section>
 
+        <section id="pregunta4">
+            <h2>Pregunta 4: Perfil de Compradores de Bicicleta</h2>
+            <p>Características de los compradores de bicicletas utilizando las variables <strong>BikePurchase</strong>, <strong>Age</strong>, <strong>Gender</strong>, <strong>YearlyIncome</strong>, <strong>MaritalStatus</strong>, <strong>TotalChildren</strong>, <strong>HomeOwnerFlag</strong>, <strong>NumberCarsOwned</strong>.</p>
+            <h3>Código en R utilizado</h3>
+            <pre><code># Análisis de proporción de compradores
+tabla_compra <- table(Clientes$BikePurchase)
+prop.table(tabla_compra)
 
+# Edad promedio de compradores
+datos_edad <- Clientes %>%
+  group_by(BikePurchase) %>%
+  summarize(edad_promedio = mean(Age))
 
+# Boxplot de edad vs compra de bicicleta
+ggplot(Clientes, aes(x = as.factor(BikePurchase), y = Age)) +
+  geom_boxplot() +
+  labs(x = "Comprador de Bicicleta", y = "Edad")
+
+# Regresión logística para perfil de comprador
+modelo <- glm(BikePurchase ~ Age + as.factor(Gender) + as.factor(YearlyIncome) + as.factor(MaritalStatus) + TotalChildren + as.factor(HomeOwnerFlag) + NumberCarsOwned, 
+              data = Clientes, family = "binomial")
+summary(modelo)
+</code></pre>
+            <h3>Gráfico Obtenido</h3>
+            <img src="boxplot_edad.png" alt="Boxplot edad vs compra de bicicleta" />
+            <div class="conclusion">
+                <strong>Hallazgo:</strong> Aproximadamente el 49.4% de los clientes son compradores de bicicleta. La edad promedio de los compradores es de 57.3 años. El modelo logístico sugiere que variables como edad, género y nivel de ingresos tienen influencia significativa en la probabilidad de compra.
+            </div>
+        </section>
+
+        <section id="conclusiones">
+            <h2>Conclusiones Iniciales</h2>
+            <ul>
+                <li>Estados Unidos concentra la mayor parte de la facturación, seguido de Australia.</li>
+                <li>Las ventas muestran una tendencia creciente a lo largo del período analizado.</li>
+                <li>Existen diferencias significativas en el precio medio de los productos según el color; los más costosos son rojo, plata y amarillo.</li>
+                <li>El perfil de compradores de bicicleta se caracteriza por estar entre 40 y 98 años, con un ligero predominio femenino entre los compradores.</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Adrià Vernis</p>
+            <p><a href="index.html">← Volver al Portfolio</a></p>
         </footer>
     </div>
 </body>
 </html>
+
