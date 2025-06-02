@@ -1,87 +1,306 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adrià Vernis | Data Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #f4f4f4;
-    }
-    header {
-      background-color: #222;
-      color: white;
-      padding: 1em;
-      text-align: center;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background-color: #444;
-    }
-    nav a {
-      color: white;
-      padding: 1em;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-    nav a:hover {
-      background-color: #666;
-    }
-    section {
-      padding: 2em;
-      max-width: 1000px;
-      margin: auto;
-      background-color: white;
-    }
-    footer {
-      text-align: center;
-      padding: 1em;
-      background-color: #222;
-      color: white;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio digital profesional de [Tu Nombre]">
+    <title>[Tu Nombre] - Portafolio Profesional</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Adrià Vernis</h1>
-    <p>Data Analyst | Business Intelligence | Power BI | Python | SQL</p>
-  </header>
+    <!-- Encabezado y Navegación -->
+    <header id="main-header">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#hero">[Tu Nombre]</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#about">Sobre Mí</a></li>
+                <li><a href="#experience">Experiencia</a></li>
+                <li><a href="#projects">Proyectos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
 
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#proyectos">Proyectos</a>
-    <a href="#contacto">CV / Contacto</a>
-  </nav>
+    <main>
+        <!-- Sección Hero (Inicio) -->
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Hola, soy</h2>
+                    <h1>[Tu Nombre]</h1>
+                    <p>Desarrollador Web Full Stack | Apasionado por la tecnología y la creación de soluciones innovadoras.</p>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">Mis Proyectos</a>
+                        <a href="#contact" class="btn btn-secondary">Contáctame</a>
+                    </div>
+                    <div class="social-links-hero">
+                        <a href="https://linkedin.com/in/tu-usuario" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/tu-usuario" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com/tu-usuario" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://placehold.co/400x400/E0E0E0/B0B0B0?text=Tu+Foto" alt="Foto de perfil de [Tu Nombre]">
+                </div>
+            </div>
+        </section>
 
-  <section id="inicio">
-    <h2>Bienvenido</h2>
-    <p>
-      Soy Adrià Vernis, profesional del análisis de datos con experiencia en herramientas como Power BI, Python, SQL y más.
-      Aquí podrás ver algunos de mis proyectos, mi CV y cómo contactarme.
-    </p>
-  </section>
+        <!-- Sección Sobre Mí -->
+        <section id="about" class="about-section">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-content">
+                <div class="about-image">
+                     <img src="https://placehold.co/350x450/E0E0E0/B0B0B0?text=Sobre+Mí" alt="Imagen descriptiva sobre mí">
+                </div>
+                <div class="about-text">
+                    <p>Soy un entusiasta desarrollador de software con experiencia en el diseño, desarrollo y mantenimiento de aplicaciones web. Me especializo en tecnologías como HTML, CSS, JavaScript, y frameworks modernos como React y Node.js.</p>
+                    <p>Me considero una persona proactiva, con gran capacidad de aprendizaje y adaptación a nuevas tecnologías. Disfruto trabajando en equipo y enfrentando nuevos desafíos que me permitan crecer profesionalmente.</p>
+                    <h3>Habilidades Clave:</h3>
+                    <ul class="skills-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React & Redux</li>
+                        <li>Node.js & Express</li>
+                        <li>Bases de datos SQL y NoSQL</li>
+                        <li>Git & GitHub</li>
+                        <li>Metodologías Ágiles (Scrum)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <ul>
-      <li><strong>Análisis de churn bancario</strong>: Modelos predictivos con R, SHAP y dashboard en Power BI.</li>
-      <li><strong>Dashboards comerciales</strong>: Conexión a Dynamics CRM, indicadores de ventas y rentabilidad.</li>
-      <li><strong>Yahoo Finance SQL + Power BI</strong>: Extracción de datos bursátiles, visualización por empresa del S&P500.</li>
-    </ul>
-  </section>
+        <!-- Sección Experiencia Laboral -->
+        <section id="experience" class="experience-section">
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="timeline">
+                <!-- Item de Experiencia 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">Enero 2022 - Presente</span>
+                        <h3>Desarrollador Web Senior</h3>
+                        <h4>Empresa Tecnológica S.A.</h4>
+                        <p>Lideré el desarrollo de nuevas funcionalidades para la plataforma principal de la empresa, mejorando la experiencia de usuario y optimizando el rendimiento. Colaboré en equipos multidisciplinarios utilizando metodologías ágiles.</p>
+                        <ul class="skills">
+                            <li>React</li>
+                            <li>Node.js</li>
+                            <li>TypeScript</li>
+                            <li>AWS</li>
+                            <li>Scrum</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Item de Experiencia 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">Junio 2020 - Diciembre 2021</span>
+                        <h3>Desarrollador Web Junior</h3>
+                        <h4>Startup Innovadora Ltda.</h4>
+                        <p>Participé en el ciclo completo de desarrollo de software, desde la toma de requisitos hasta el despliegue. Contribuí al desarrollo de interfaces de usuario interactivas y APIs RESTful.</p>
+                        <ul class="skills">
+                            <li>Vue.js</li>
+                            <li>Python (Django)</li>
+                            <li>PostgreSQL</li>
+                            <li>Docker</li>
+                            <li>Git</li>
+                        </ul>
+                    </div>
+                </div>
+                 <!-- Item de Experiencia 3 (Ejemplo adicional) -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <span class="date">Marzo 2019 - Mayo 2020</span>
+                        <h3>Pasante de Desarrollo</h3>
+                        <h4>Consultora Digital XYZ</h4>
+                        <p>Apoyé al equipo de desarrollo en tareas de maquetación web, pruebas de software y mantenimiento de aplicaciones existentes. Aprendí fundamentos de desarrollo frontend y backend.</p>
+                        <ul class="skills">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>PHP</li>
+                            <li>MySQL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <section id="contacto">
-    <h2>CV y Contacto</h2>
-    <p>Puedes descargar mi CV <a href="CV_AdriaVernis.pdf" target="_blank">aquí</a>.</p>
-    <p>Contacto: <a href="mailto:adriavernis@gmail.com">adriavernis@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/adriavernis" target="_blank">linkedin.com/in/adriavernis</a></p>
-  </section>
+        <!-- Sección Proyectos Personales -->
+        <section id="projects" class="projects-section">
+            <h2 class="section-title">Proyectos Personales</h2>
+            <div class="project-container">
+                <!-- Proyecto 1 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/DDE6ED/526D82?text=Proyecto+1" alt="Miniatura del Proyecto 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>Nombre del Proyecto 1</h3>
+                        <p>Breve descripción del proyecto, sus objetivos y funcionalidades principales. Destacar el impacto o solución que aporta.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Firebase</span>
+                            <span>Material UI</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="btn-project"><i class="fas fa-eye"></i> Demo</a>
+                            <a href="#" target="_blank" class="btn-project"><i class="fab fa-github"></i> Código</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 2 -->
+                <div class="project-card">
+                     <div class="project-img">
+                        <img src="https://placehold.co/600x400/9DB2BF/27374D?text=Proyecto+2" alt="Miniatura del Proyecto 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Nombre del Proyecto 2</h3>
+                        <p>Descripción detallada de otro proyecto interesante, mencionando las tecnologías clave y los desafíos superados durante su desarrollo.</p>
+                         <div class="project-tech">
+                            <span>Node.js</span>
+                            <span>Express</span>
+                            <span>MongoDB</span>
+                            <span>JWT</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="btn-project"><i class="fas fa-eye"></i> Demo</a>
+                            <a href="#" target="_blank" class="btn-project"><i class="fab fa-github"></i> Código</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Proyecto 3 -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://placehold.co/600x400/526D82/DDE6ED?text=Proyecto+3" alt="Miniatura del Proyecto 3">
+                    </div>
+                    <div class="project-info">
+                        <h3>Nombre del Proyecto 3</h3>
+                        <p>Un tercer proyecto que muestre diversidad en tus habilidades o un enfoque diferente, por ejemplo, una aplicación móvil o una herramienta de línea de comandos.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>SQLite</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank" class="btn-project"><i class="fas fa-eye"></i> Demo</a>
+                            <a href="#" target="_blank" class="btn-project"><i class="fab fa-github"></i> Código</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <footer>
-    <p>&copy; 2025 Adrià Vernis · adriavernis.com</p>
-  </footer>
+        <!-- Sección Contacto -->
+        <section id="contact" class="contact-section">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-content">
+                <p>Si estás interesado en colaborar o tienes alguna pregunta, no dudes en contactarme.</p>
+                <p>Puedes encontrarme en <a href="mailto:tuemail@example.com">tuemail@example.com</a> o a través de mis redes sociales.</p>
+                <div class="social-links-contact">
+                    <a href="https://linkedin.com/in/tu-usuario" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/tu-usuario" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/tu-usuario" target="_blank" class="social-icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="mailto:tuemail@example.com" class="social-icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+                 <a href="mailto:tuemail@example.com" class="btn btn-primary btn-contact">Enviar un Mensaje</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer id="main-footer">
+        <div class="footer-content">
+            <p>&copy; <span id="current-year"></span> [Tu Nombre]. Todos los derechos reservados.</p>
+            <div class="footer-social-links">
+                <a href="https://linkedin.com/in/tu-usuario" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/tu-usuario" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/tu-usuario" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el año actual en el footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Script para el menú hamburguesa en móviles
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                // Cambiar icono de hamburguesa a X y viceversa
+                const icon = navToggle.querySelector('i');
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Cerrar menú al hacer clic en un enlace (para navegación en la misma página)
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const icon = navToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+
+        // Efecto de aparición suave en el scroll para secciones
+        const sections = document.querySelectorAll('section');
+        const options = {
+            root: null, // viewport
+            threshold: 0.1, // 10% de la sección visible
+            rootMargin: "0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Dejar de observar una vez que es visible
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Efecto de scroll suave para anclas
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+    </script>
 </body>
 </html>
