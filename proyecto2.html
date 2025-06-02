@@ -25,7 +25,6 @@
         footer { text-align: center; color: #777; font-size: 0.85rem; margin-top: 2rem; }
         a { color: #007acc; text-decoration: none; }
         a:hover { text-decoration: underline; }
-        a[target="_blank"] { target: none; }
     </style>
 </head>
 <body>
@@ -38,5 +37,50 @@
             </div>
         </header>
 
-        <!-- El resto del documento permanece igual -->
+        <section>
+            <h2>Pregunta 1: Facturación por País</h2>
+            <p>¿En qué país se concentra la mayor parte de la facturación?</p>
+            <img class="chart" src="grafico_pais.png" alt="Gráfico facturación por país" />
+            <div class="conclusion">
+                La mayor parte de la facturación se concentra en Estados Unidos, con un total cercano a los 9,5 millones de euros.
+            </div>
+        </section>
+
+        <section>
+            <h2>Pregunta 2: Tendencia de Ventas</h2>
+            <p>¿Qué tendencia tienen las ventas de la empresa?</p>
+            <img class="chart" src="grafico_ventas_lineal.png" alt="Gráfico ventas lineal" />
+            <img class="chart" src="grafico_ventas_tendencia.png" alt="Gráfico ventas y tendencia" />
+            <div class="conclusion">
+                Las ventas muestran una tendencia general creciente, con una estacionalidad clara en ciertos períodos del año.
+            </div>
+        </section>
+
+        <section>
+            <h2>Pregunta 3: Precios por Categoría y Color</h2>
+            <p>¿Cuál es el precio medio por categoría y color de producto?</p>
+            <img class="chart" src="grafico_precio_categoria.png" alt="Gráfico precio medio por categoría" />
+            <img class="chart" src="grafico_precio_color.png" alt="Gráfico precio por color" />
+            <img class="chart" src="grafico_precio_producto_color.png" alt="Precio por producto y color" />
+            <div class="conclusion">
+                Colores como rojo, plata y amarillo tienen precios más altos. Se identifican diferencias de precio según el color del producto.
+            </div>
+        </section>
+
+        <section>
+            <h2>Pregunta 4: Perfil de Clientes</h2>
+            <p>¿Qué características tienen los compradores de bicicletas?</p>
+            <img class="chart" src="grafico_edad_boxplot.png" alt="Gráfico edad compradores" />
+            <div class="conclusion">
+                El 49,4% de los clientes compran bicicleta. La edad promedio es de 57,3 años y hay una ligera mayoría de mujeres compradoras.
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2025 Adrià Vernis. Todos los derechos reservados.
+        </footer>
+    </div>
+</body>
+</html>
+
 
