@@ -44,6 +44,15 @@
             <div class="conclusion">
                 La mayor parte de la facturación se concentra en Estados Unidos, con un total cercano a los 9,5 millones de euros.
             </div>
+            <h3>Código R utilizado</h3>
+            <pre><code>ventas_por_pais &lt;- datos_Clientes_Clean %&gt;%
+  group_by(Country_clean) %&gt;%
+  summarize(Venta = sum(TotalAmount)) %&gt;%
+  arrange(desc(Venta))
+
+# Top 10 gráfico
+... (resto del código R correspondiente)
+</code></pre>
         </section>
 
         <section>
@@ -54,6 +63,15 @@
             <div class="conclusion">
                 Las ventas muestran una tendencia general creciente, con una estacionalidad clara en ciertos períodos del año.
             </div>
+            <h3>Código R utilizado</h3>
+            <pre><code># Agrupación por mes y aplicación de filtro HP para tendencia
+ventasmes &lt;- datos_ventas %&gt;%
+  group_by(mes) %&gt;%
+  summarise(ventas = sum(Sales))
+
+ventasmensuales &lt;- ts(ventasmes$ventas, start = c(2011, 5), frequency = 12)
+...
+</code></pre>
         </section>
 
         <section>
@@ -65,6 +83,14 @@
             <div class="conclusion">
                 Colores como rojo, plata y amarillo tienen precios más altos. Se identifican diferencias de precio según el color del producto.
             </div>
+            <h3>Código R utilizado</h3>
+            <pre><code>productos_precio_medio &lt;- datos_productos %&gt;%
+  group_by(Name) %&gt;%
+  summarize(precio_medio = mean(UnitPrice))
+
+# Boxplot por color
+... (resto del código R correspondiente)
+</code></pre>
         </section>
 
         <section>
@@ -74,6 +100,13 @@
             <div class="conclusion">
                 El 49,4% de los clientes compran bicicleta. La edad promedio es de 57,3 años y hay una ligera mayoría de mujeres compradoras.
             </div>
+            <h3>Código R utilizado</h3>
+            <pre><code>table(Clientes$BikePurchase)
+prop.table(table(Clientes$BikePurchase))
+
+# Modelo de regresión
+modelo &lt;- glm(BikePurchase ~ Age + Gender + ..., family = "binomial")
+...</code></pre>
         </section>
 
         <footer>
