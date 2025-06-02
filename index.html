@@ -35,7 +35,9 @@
         .project-card .content p { color: #555; }
         #contacto { background-color: #eef6fc; }
         #contacto .contact-info { max-width: 600px; margin: 0 auto; text-align: center; }
-        #contacto .contact-info a { color: #007acc; text-decoration: none; font-weight: 500; }
+        #contacto .contact-info a { text-decoration: none; font-weight: 500; color: #333; margin: 0 1rem; display: inline-flex; align-items: center; transition: color 0.3s; }
+        #contacto .contact-info a:hover { color: #007acc; }
+        #contacto .contact-info img { width: 24px; height: 24px; margin-right: 0.5rem; }
         footer { background-color: #fff; text-align: center; padding: 2rem 0; color: #777; font-size: 0.9rem; }
     </style>
 </head>
@@ -99,9 +101,9 @@
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 2rem; color: #007acc;">Contacto</h2>
             <div class="contact-info">
-                <p>Descarga mi <a href="CV_AdriaVernis.pdf" target="_blank">CV en PDF</a>.</p>
-                <p>Email: <a href="mailto:adriavernis@gmail.com">adriavernis@gmail.com</a></p>
-                <p>LinkedIn: <a href="https://www.linkedin.com/in/adriavernis" target="_blank">linkedin.com/in/adriavernis</a></p>
+                <a href="mailto:adriavernis@gmail.com"> <img src="email.png" alt="Email" /> adriavernis@gmail.com</a>
+                <a href="https://www.linkedin.com/in/adriavernis" target="_blank"> <img src="linkedin.png" alt="LinkedIn" /> linkedin.com/in/adriavernis</a>
+                <a href="https://twitter.com/adriavernis" target="_blank"> <img src="twitter.png" alt="Twitter" /> @adriavernis</a>
             </div>
         </div>
     </section>
