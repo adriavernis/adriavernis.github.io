@@ -66,10 +66,14 @@
 
   <div class="container">
     <h1>Optimización de la Retención de Clientes en Entidades Financieras con Análisis Predictivo y Machine Learning</h1>
-    <p>
-      Este proyecto consiste en el desarrollo de un modelo predictivo para identificar el posible abandono de clientes (churn) en una entidad bancaria, utilizando técnicas de machine learning (Random Forest) y análisis de interpretabilidad individualizados con valores <b>SHAP</b> en Python. Se trabaja con un dataset real, realizando un preprocesamiento completo de los datos, entrenamiento, evaluación y explicación del modelo.<br>
-      Además, el análisis incluye visualizaciones que ayudan a comprender la importancia y el impacto de cada variable en las predicciones individuales y globales del modelo.
-    </p>
+   <p>
+  Este proyecto aborda el reto de predecir el abandono de clientes (<b>churn</b>) en una entidad bancaria a través de técnicas avanzadas de <b>machine learning</b> y análisis interpretativo.  
+  Se parte de un dataset real, aplicando una comparativa de modelos supervisados (<b>regresión logística</b>, <b>árbol de decisión</b> y <b>random forest</b>) utilizando <b>R</b>. Tras evaluar el rendimiento de cada algoritmo, se selecciona <b>Random Forest</b> como modelo óptimo y se exportan los resultados para su análisis visual en <b>Power BI</b>.
+  <br><br>
+  En una segunda fase, el proyecto utiliza <b>Python</b> para aplicar técnicas de interpretabilidad, empleando <b>SHAP values</b> que permiten comprender el peso e impacto de cada variable en las decisiones del modelo, tanto a nivel individual como global.  
+  El flujo completo de trabajo – desde la comparación de modelos hasta la interpretación visual y explicativa de los resultados – facilita la toma de decisiones basadas en datos y el entendimiento de los factores clave detrás del abandono de clientes.
+</p>
+
 
  <h2>Descarga y vista del Dashboard en Power BI</h2>
     <div>
@@ -86,9 +90,9 @@
 
 </div>       
 
-    <h2>Código en R: Comparación de Modelos Supervisados</h2>
+    <h2>Código en R: Comparación de Modelos de Aprendizaje Supervisados</h2>
 <p>
-  Además del análisis principal en Python, para comparar distintos modelos de aprendizaje supervisado también se ha utilizado <b>R</b>. 
+  Se comparan distintos modelos de aprendizaje supervisado utilizadondo <b>R</b>. 
   Se probaron tres modelos: <b>Regresión Logística</b>, <b>Árbol de Decisión</b> y <b>Random Forest</b>, evaluando su precisión y capacidad predictiva. 
   El modelo elegido finalmente fue Random Forest, que ofreció mejores resultados. 
   El resultado de este modelo se exportó a un CSV (<code>predicciones_rf.csv</code>) para su análisis posterior en Power BI.
@@ -96,7 +100,7 @@
 
 <pre>
 library(readr)
-churn &lt;- read_csv("C:/Users/adria/OneDrive/Master Business Intelligence/Trabajo Final de Máster/Churn Bank/churn.csv")
+churn &lt;- read_csv("churn.csv")
 View(churn)
 
 datos &lt;- churn
@@ -159,7 +163,14 @@ write.csv(datos, "predicciones_rf.csv", row.names = FALSE)
 </pre>
 
 
-   <h2>Código Python: SHAP Values individualizados:</h2>
+   <h2>Código en Python: SHAP Values individualizados</h2>
+
+  <p>
+  Tras la comparación de modelos en R, se ha seleccionado <b>Random Forest</b> como el algoritmo más eficaz para predecir el abandono de clientes. 
+  En este bloque se muestra el código principal en <b>Python</b> utilizado para entrenar el modelo de Random Forest, analizar la importancia de las variables y aplicar técnicas de interpretabilidad mediante <b>SHAP values</b>. 
+  Este análisis permite comprender tanto el funcionamiento interno del modelo como el impacto de cada variable en la predicción individual de cada cliente.
+</p>
+
 
     <pre>
 # Instalación de librerías (en Google Colab)
