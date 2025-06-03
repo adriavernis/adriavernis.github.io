@@ -86,7 +86,80 @@
 
 </div>       
 
-   <h2>Código principal (Python):</h2>
+    <h2>Código en R: Comparación de Modelos Supervisados</h2>
+<p>
+  Además del análisis principal en Python, para comparar distintos modelos de aprendizaje supervisado también se ha utilizado <b>R</b>. 
+  Se probaron tres modelos: <b>Regresión Logística</b>, <b>Árbol de Decisión</b> y <b>Random Forest</b>, evaluando su precisión y capacidad predictiva. 
+  El modelo elegido finalmente fue Random Forest, que ofreció mejores resultados. 
+  El resultado de este modelo se exportó a un CSV (<code>predicciones_rf.csv</code>) para su análisis posterior en Power BI.
+</p>
+
+<pre>
+library(readr)
+churn &lt;- read_csv("C:/Users/adria/OneDrive/Master Business Intelligence/Trabajo Final de Máster/Churn Bank/churn.csv")
+View(churn)
+
+datos &lt;- churn
+
+# Análisis descriptivo de los datos
+summary(datos)
+str(datos)
+
+# Cuántos y qué % de clientes se van del banco
+table(datos$Exited)
+prop.table(table(datos$Exited))
+
+# Categóricas
+datos$Gender &lt;- as.factor(datos$Gender)
+datos$Geography &lt;- as.factor(datos$Geography)
+datos$Exited &lt;- as.factor(datos$Exited)
+
+# Split 80/20
+library("caTools")
+division &lt;- sample.split(datos$Exited, SplitRatio = 0.8)
+entrenamiento &lt;- subset(datos, division==TRUE)
+test &lt;- subset(datos, division==FALSE)
+
+prop.table(table(datos$Exited))
+prop.table(table(entrenamiento$Exited))
+prop.table(table(test$Exited))
+
+# Regresión Logística
+reg_logistica &lt;- glm(Exited ~ Age + Gender + Geography + CreditScore + Balance + NumOfProducts + IsActiveMember,
+                     data = entrenamiento, family = "binomial")
+summary(reg_logistica)
+prediccionmodelo &lt;- predict(reg_logistica, newdata = test, type = "response")
+prediccionmodelocod &lt;- ifelse(prediccionmodelo &gt; 0.5, 1, 0)
+library(caret)
+confusionMatrix(as.factor(prediccionmodelocod), as.factor(test$Exited))
+
+# Árbol de decisión
+library(rpart)
+library(rpart.plot)
+modelo_arbol &lt;- rpart(Exited ~ Age + Gender + Geography + CreditScore + Balance + NumOfProducts + IsActiveMember,
+                     data = entrenamiento, method = "class")
+summary(modelo_arbol)
+rpart.plot(modelo_arbol)
+prediccionarbol &lt;- predict(modelo_arbol, newdata = test, type = "class")
+confusionMatrix(as.factor(test$Exited), as.factor(prediccionarbol))
+
+# Random Forest
+library(randomForest)
+set.seed(123)
+modelo_rf &lt;- randomForest(Exited ~ Age + Gender + Geography + CreditScore + Balance + NumOfProducts + IsActiveMember,
+                          data = entrenamiento, ntree = 500, mtry = 3, importance = TRUE)
+print(modelo_rf)
+prediccion_rf &lt;- predict(modelo_rf, newdata = test)
+confusionMatrix(as.factor(prediccion_rf), as.factor(test$Exited))
+varImpPlot(modelo_rf)
+
+# Exportar resultados para Power BI
+datos$Predicted_Exited &lt;- predict(modelo_rf, newdata = datos)
+write.csv(datos, "predicciones_rf.csv", row.names = FALSE)
+</pre>
+
+
+   <h2>Código Python: SHAP Values individualizados:</h2>
 
     <pre>
 # Instalación de librerías (en Google Colab)
