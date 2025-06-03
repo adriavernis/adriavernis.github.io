@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proyecto 1 | Adrià Vernis</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; }
+    header { background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1rem; display: flex; align-items: center; }
+    header img { height: 50px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+    h1 { color: #007acc; margin-bottom: 1rem; }
+    h2 { color: #007acc; margin-top: 2.5rem; margin-bottom: 1rem; }
+    .btn-volver {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.5rem 1.2rem;
+      background-color: #007acc;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background-color 0.3s;
+    }
+    .btn-volver:hover {
+      background-color: #005f99;
+    }
+    pre {
+      background-color: #f2f2f2;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 5px;
+      margin: 1.5rem 0;
+      font-size: 0.98rem;
+    }
+    .shap-block {
+      margin-bottom: 2.5rem;
+    }
+    img.shap-img {
+      max-width: 100%;
+      height: auto;
+      margin: 1.5rem 0 0.5rem 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .shap-desc {
+      text-align: center;
+      color: #555;
+      font-size: 1rem;
+      margin-top: 0.2rem;
+    }
+    .codigo-titulo { font-weight: 600; margin-top: 2rem; color: #007acc; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html"><img src="logo.png" alt="Logo" /></a>
+  </header>
+
+  <div class="container">
+    <h1>Análisis de Churn Bancario (Python & SHAP)</h1>
+    <p>
+      Este proyecto consiste en el desarrollo de un modelo predictivo para identificar la posible fuga de clientes (churn) en una entidad bancaria, utilizando técnicas de machine learning (Random Forest) y análisis de interpretabilidad con valores <b>SHAP</b> en Python. Se trabaja con un dataset real, realizando un preprocesamiento completo de los datos, entrenamiento, evaluación y explicación del modelo.<br>
+      Además, el análisis incluye visualizaciones que ayudan a comprender la importancia y el impacto de cada variable en las predicciones individuales y globales del modelo.
+    </p>
+
+    <div class="codigo-titulo">Código principal (Python + SHAP):</div>
+    <pre>
+# Instalación de librerías (en Google Colab)
+!pip install shap
+
+import numpy as np
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
+import shap
+
+# Cargar los datos
+data = pd.read_csv("churn.csv")
+train, test = train_test_split(data, test_size=0.3, random_state=0, stratify=data['Exited'])
+
+# Eliminación de columnas innecesarias
+train = train.drop(['RowNumber', 'Surname', 'CustomerId'], axis=1)
+test = test.drop(['RowNumber', 'Surname', 'CustomerId'], axis=1)
+
+# Conversión de variables categóricas
+train_processed = pd.get_dummies(train)
+test_processed = pd.get_dummies(test)
+
+# Rellenar valores nulos
+train_processed = train_processed.fillna(train_processed.mean(numeric_only=True))
+test_processed = test_processed.fillna(test_processed.mean(numeric_only=True))
+test_processed = test_processed[train_processed.columns]
+
+# Crear matrices de entrenamiento y test
+X_train = train_processed.drop(['Exited'], axis=1)
+Y_train = train_processed['Exited']
+X_test = test_processed.drop(['Exited'], axis=1)
+Y_test = test_processed['Exited']
+
+# Entrenar modelo Random Forest
+random_forest = RandomForestClassifier(n_estimators=100)
+random_forest.fit(X_train, Y_train)
+random_forest_preds = random_forest.predict(X_test)
+print('The accuracy of the Random Forests model is :', metrics.accuracy_score(random_forest_preds, Y_test))
+
+# Interpretabilidad con SHAP
+explainer = shap.TreeExplainer(random_forest)
+
+# Ejemplo de predicción e interpretación
+choosen_instance = X_test.loc[2739]
+shap_values = explainer.shap_values(choosen_instance)
+
+shap.initjs()
+shap.force_plot(explainer.expected_value[1], shap_values[1], choosen_instance)
+    </pre>
+
+    <h2>Visualizaciones SHAP Individuales</h2>
+
+    <div class="shap-block">
+      <img src="shap_individual_1.png" alt="SHAP Force Plot Cliente 1" class="shap-img" />
+      <div class="shap-desc">Contribución de variables al resultado para el Cliente 1.<br>
+        Se observa cómo cada característica influye en la predicción individual de churn.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_2.png" alt="SHAP Force Plot Cliente 2" class="shap-img" />
+      <div class="shap-desc">Interpretación de la predicción del modelo para el Cliente 2.<br>
+        Las variables en rojo contribuyen a aumentar la probabilidad de churn, y las azules a disminuirla.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_3.png" alt="SHAP Force Plot Cliente 3" class="shap-img" />
+      <div class="shap-desc">Análisis individualizado de la decisión del modelo para el Cliente 3.<br>
+        Permite identificar los factores más determinantes en el resultado.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_4.png" alt="SHAP Force Plot Cliente 4" class="shap-img" />
+      <div class="shap-desc">Visualización SHAP para el Cliente 4.<br>
+        Se aprecian las principales variables responsables de la clasificación del cliente.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_5.png" alt="SHAP Force Plot Cliente 5" class="shap-img" />
+      <div class="shap-desc">Predicción explicada para el Cliente 5.<br>
+        El gráfico muestra el impacto de cada feature en la decisión final del modelo.</div>
+    </div>
+
+    <a class="btn-volver" href="index.html">← Volver al inicio</a>
+  </div>
+
+</body>
+</html>
