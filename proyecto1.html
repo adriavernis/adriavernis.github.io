@@ -65,11 +65,39 @@
   </header>
 
   <div class="container">
-    <h1>Análisis de Churn Bancario (Python & SHAP)</h1>
+    <h1>Optimización de la Retención de Clientes en Entidades Financieras con Análisis Predictivo y Machine Learning</h1>
     <p>
-      Este proyecto consiste en el desarrollo de un modelo predictivo para identificar la posible fuga de clientes (churn) en una entidad bancaria, utilizando técnicas de machine learning (Random Forest) y análisis de interpretabilidad con valores <b>SHAP</b> en Python. Se trabaja con un dataset real, realizando un preprocesamiento completo de los datos, entrenamiento, evaluación y explicación del modelo.<br>
+      Este proyecto consiste en el desarrollo de un modelo predictivo para identificar el posible abandono de clientes (churn) en una entidad bancaria, utilizando técnicas de machine learning (Random Forest) y análisis de interpretabilidad individualizados con valores <b>SHAP</b> en Python. Se trabaja con un dataset real, realizando un preprocesamiento completo de los datos, entrenamiento, evaluación y explicación del modelo.<br>
       Además, el análisis incluye visualizaciones que ayudan a comprender la importancia y el impacto de cada variable en las predicciones individuales y globales del modelo.
     </p>
+
+        <h2>Visualizaciones SHAP Values Individuales</h2>
+
+    <div class="shap-block">
+      <img src="shap_individual_1.png" alt="SHAP Force Plot Cliente 1" class="shap-img" />
+      <div class="shap-desc">Contribución de variables al resultado para el Cliente 1.<br>
+        Se observa cómo cada característica influye en la predicción individual de churn.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_2.png" alt="SHAP Force Plot Cliente 2" class="shap-img" />
+      <div class="shap-desc">Interpretación de la predicción del modelo para el Cliente 2.<br>
+        Las variables en rojo contribuyen a aumentar la probabilidad de churn, y las azules a disminuirla.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_3.png" alt="SHAP Force Plot Cliente 3" class="shap-img" />
+      <div class="shap-desc">Análisis individualizado de la decisión del modelo para el Cliente 3.<br>
+        Permite identificar los factores más determinantes en el resultado.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_4.png" alt="SHAP Force Plot Cliente 4" class="shap-img" />
+      <div class="shap-desc">Visualización SHAP para el Cliente 4.<br>
+        Se aprecian las principales variables responsables de la clasificación del cliente.</div>
+    </div>
+    <div class="shap-block">
+      <img src="shap_individual_5.png" alt="SHAP Force Plot Cliente 5" class="shap-img" />
+      <div class="shap-desc">Predicción explicada para el Cliente 5.<br>
+        El gráfico muestra el impacto de cada feature en la decisión final del modelo.</div>
+    </div>
 
     <div class="codigo-titulo">Código principal (Python + SHAP):</div>
     <pre>
@@ -122,34 +150,6 @@ shap_values = explainer.shap_values(choosen_instance)
 shap.initjs()
 shap.force_plot(explainer.expected_value[1], shap_values[1], choosen_instance)
     </pre>
-
-    <h2>Visualizaciones SHAP Individuales</h2>
-
-    <div class="shap-block">
-      <img src="shap_individual_1.png" alt="SHAP Force Plot Cliente 1" class="shap-img" />
-      <div class="shap-desc">Contribución de variables al resultado para el Cliente 1.<br>
-        Se observa cómo cada característica influye en la predicción individual de churn.</div>
-    </div>
-    <div class="shap-block">
-      <img src="shap_individual_2.png" alt="SHAP Force Plot Cliente 2" class="shap-img" />
-      <div class="shap-desc">Interpretación de la predicción del modelo para el Cliente 2.<br>
-        Las variables en rojo contribuyen a aumentar la probabilidad de churn, y las azules a disminuirla.</div>
-    </div>
-    <div class="shap-block">
-      <img src="shap_individual_3.png" alt="SHAP Force Plot Cliente 3" class="shap-img" />
-      <div class="shap-desc">Análisis individualizado de la decisión del modelo para el Cliente 3.<br>
-        Permite identificar los factores más determinantes en el resultado.</div>
-    </div>
-    <div class="shap-block">
-      <img src="shap_individual_4.png" alt="SHAP Force Plot Cliente 4" class="shap-img" />
-      <div class="shap-desc">Visualización SHAP para el Cliente 4.<br>
-        Se aprecian las principales variables responsables de la clasificación del cliente.</div>
-    </div>
-    <div class="shap-block">
-      <img src="shap_individual_5.png" alt="SHAP Force Plot Cliente 5" class="shap-img" />
-      <div class="shap-desc">Predicción explicada para el Cliente 5.<br>
-        El gráfico muestra el impacto de cada feature en la decisión final del modelo.</div>
-    </div>
 
     <a class="btn-volver" href="index.html">← Volver al inicio</a>
   </div>
