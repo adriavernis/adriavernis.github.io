@@ -25,64 +25,83 @@
         #inicio .intro h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #007acc; }
         #inicio .intro .tagline { font-style: italic; color: #555; margin-bottom: 0.5rem; }
         #inicio .intro p { font-size: 1rem; max-width: 800px; margin: 0 auto; color: #555; }
-    #proyectos .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.8rem;
-    justify-content: center;
-}
 
-.project-card {
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit;
-    max-width: 360px;
-    margin: 0 auto;
-}
+        #proyectos .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+            justify-content: center;
+        }
 
-.project-card:hover {
-    transform: translateY(-5px);
-}
+        .project-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            max-width: 360px;
+            margin: 0 auto;
+        }
 
-.project-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
 
-.project-card .content {
-    padding: 1.5rem;
-}
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
 
-.project-card .content h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    color: #007acc;
-}
+        .project-card .content {
+            padding: 1.5rem;
+        }
 
-.project-card .content p {
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.4;
-}
+        .project-card .content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: #007acc;
+        }
 
-
+        .project-card .content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
 
         #herramientas { background-color: #eef6fc; text-align: center; }
         #herramientas h2 { color: #007acc; margin-bottom: 2rem; }
         #herramientas .tools-logos { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
         #herramientas .tools-logos img { width: 32px; height: 32px; transition: transform 0.3s; }
         #herramientas .tools-logos img:hover { transform: scale(1.1); }
+
         #contacto { background-color:#fff; }
-        #contacto .contact-info { max-width: 600px; margin: 0 auto; text-align: center; display: flex; justify-content: center; gap: 2rem; }
-        #contacto .contact-info a { display: inline-flex; align-items: center; transition: opacity 0.3s; }
-        #contacto .contact-info a:hover { opacity: 0.7; }
-        #contacto .contact-info img { width: 32px; height: 32px; }
+        /* Modificación para centrar verticalmente y apilar los iconos */
+        #contacto .contact-info {
+            max-width: 200px;
+            margin: 0 auto;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        #contacto .contact-info a {
+            display: inline-flex;
+            align-items: center;
+            transition: opacity 0.3s;
+        }
+        #contacto .contact-info a:hover {
+            opacity: 0.7;
+        }
+        #contacto .contact-info img {
+            width: 32px;
+            height: 32px;
+        }
+
         footer { background-color: #fff; text-align: center; padding: 2rem 0; color: #777; font-size: 0.9rem; }
     </style>
 </head>
@@ -93,7 +112,7 @@
                 <div class="logo">
                     <img src="logo.png" alt="Logo Adrià Vernis" />
                 </div>
-                  <ul>
+                <ul>
                     <li><a href="#inicio">Inicio</a></li>
                     <li><a href="#proyectos">Proyectos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
@@ -125,13 +144,11 @@
                 </a>
                 <a href="proyecto2.html" class="project-card">
                     <img src="proyecto2.png" alt="Proyecto 2" />
-
-                  <div class="content">
-  <h3>Dashboard de Optimización Operativa en Transportes</h3>
-  <p>Dashboard interactivo en Power BI que utiliza limpieza y modelado de datos, parámetros dinámicos, marcadores y tooltips personalizados para mejorar la gestión de datos operativos.</p>
-</div>
-
-                
+                    <div class="content">
+                        <h3>Dashboard de Optimización Operativa en Transportes</h3>
+                        <p>Dashboard interactivo en Power BI que utiliza limpieza y modelado de datos, parámetros dinámicos, marcadores y tooltips personalizados para mejorar la gestión de datos operativos.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -140,8 +157,8 @@
         <div class="container">
             <h2>Herramientas</h2>
             <div class="tools-logos">
-                <img src="sql.png"  />
-                <img src="python.png"  />
+                <img src="sql.png" />
+                <img src="python.png" />
                 <img src="r.png" />
                 <img src="powerbi.png" />
             </div>
