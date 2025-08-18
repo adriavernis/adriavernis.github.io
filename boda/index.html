@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boda Adrià & [Nom]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Menú -->
+  <nav class="navbar">
+    <ul>
+      <li><a href="#inici">Inici</a></li>
+      <li><a href="#compte">Compte enrere</a></li>
+      <li><a href="#historia">Història</a></li>
+      <li><a href="#lloc">El lloc</a></li>
+      <li><a href="#rsvp">Confirma</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="inici">
+    <div class="overlay">
+      <h1>Adrià & [Nom]</h1>
+      <p>Ens casem!</p>
+      <p class="date">18 · 07 · 2026</p>
+    </div>
+  </header>
+
+  <!-- Compte enrere -->
+  <section class="countdown" id="compte">
+    <h2>Compte enrere per al gran dia</h2>
+    <div id="timer"></div>
+  </section>
+
+  <!-- Història -->
+  <section class="story" id="historia">
+    <h2>La nostra història</h2>
+    <p>
+      Aquí pots escriure com us vau conèixer, moments especials i records que voleu compartir amb els convidats.
+    </p>
+  </section>
+
+  <!-- Lloc -->
+  <section class="location" id="lloc">
+    <h2>El lloc de la celebració</h2>
+    <p>Us esperem a [Nom del lloc de la boda].</p>
+    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen></iframe>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp" id="rsvp">
+    <h2>Confirma la teva assistència</h2>
+    <form action="https://formspree.io/f/[el-teu-codi]" method="POST">
+      <input type="text" name="nom" placeholder="El teu nom" required>
+      <input type="email" name="email" placeholder="El teu correu" required>
+      <select name="assistencia">
+        <option value="Sí">Sí, hi assistiré</option>
+        <option value="No">No hi podré assistir</option>
+      </select>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Peu de pàgina -->
+  <footer>
+    <p>Adrià & [Nom] · 2026</p>
+  </footer>
+
+  <!-- JS Compte enrere + scroll suau -->
+  <script>
+    // Compte enrere
+    const weddingDate = new Date("July 18, 2026 17:00:00").getTime();
+    const timer = document.getElementById("timer");
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      const days = Math.floor(distance / (1000*60*60*24));
+      const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+      const mins = Math.floor((distance % (1000*60*60)) / (1000*60));
+      const secs = Math.floor((distance % (1000*60)) / 1000);
+      timer.innerHTML = `${days} dies · ${hours} h · ${mins} m · ${secs} s`;
+    }, 1000);
+
+    // Scroll suau
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
