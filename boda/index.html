@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boda Adrià & [Nom]</title>
+  <title>Alba & Adrià</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,65 +14,80 @@
     <ul>
       <li><a href="#inici">Inici</a></li>
       <li><a href="#compte">Compte enrere</a></li>
-      <li><a href="#historia">Història</a></li>
-      <li><a href="#lloc">El lloc</a></li>
-      <li><a href="#rsvp">Confirma</a></li>
+      <li><a href="#historia">La nostra història</a></li>
+      <li><a href="#cerimonia">Cerimònia</a></li>
+      <li><a href="#celebracio">Celebració</a></li>
+      <li><a href="#transport">Transport</a></li>
+      <li><a href="#rsvp">Confirma assistència</a></li>
+      <li><a href="#regal">Regal</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero / portada -->
   <header class="hero" id="inici">
     <div class="overlay">
-      <h1>Adrià & [Nom]</h1>
+      <h1>Alba & Adrià</h1>
       <p>Ens casem!</p>
-      <p class="date">18 · 07 · 2026</p>
+      <p class="date">05 · 09 · 2026 · 17:30h</p>
     </div>
   </header>
 
   <!-- Compte enrere -->
   <section class="countdown" id="compte">
-    <h2>Compte enrere per al gran dia</h2>
+    <h2>Compte enrere pel gran dia</h2>
     <div id="timer"></div>
   </section>
 
   <!-- Història -->
   <section class="story" id="historia">
     <h2>La nostra història</h2>
-    <p>
-      Aquí pots escriure com us vau conèixer, moments especials i records que voleu compartir amb els convidats.
-    </p>
+    <p>Aquí explicarem com ens vam conèixer i moments especials que volem compartir amb vosaltres.</p>
   </section>
 
-  <!-- Lloc -->
-  <section class="location" id="lloc">
-    <h2>El lloc de la celebració</h2>
-    <p>Us esperem a [Nom del lloc de la boda].</p>
+  <!-- Cerimònia -->
+  <section class="location" id="cerimonia">
+    <h2>Cerimònia</h2>
+    <p>El Dalmau, Masia Can Dalmau, 5, 08529 Barcelona</p>
     <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen></iframe>
+    <p>Hora: 17:30h</p>
+  </section>
+
+  <!-- Celebració -->
+  <section class="location" id="celebracio">
+    <h2>Celebració / Banquet</h2>
+    <p>El Dalmau, Masia Can Dalmau, 5, 08529 Barcelona</p>
+    <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="300" style="border:0;" allowfullscreen></iframe>
+    <p>Hora: 18:00h</p>
+  </section>
+
+  <!-- Transport -->
+  <section class="transport" id="transport">
+    <h2>Transport</h2>
+    <p>Hi haurà autobús des de Vic o podeu venir amb cotxe propi.</p>
   </section>
 
   <!-- RSVP -->
   <section class="rsvp" id="rsvp">
     <h2>Confirma la teva assistència</h2>
-    <form action="https://formspree.io/f/[el-teu-codi]" method="POST">
-      <input type="text" name="nom" placeholder="El teu nom" required>
-      <input type="email" name="email" placeholder="El teu correu" required>
-      <select name="assistencia">
-        <option value="Sí">Sí, hi assistiré</option>
-        <option value="No">No hi podré assistir</option>
-      </select>
-      <button type="submit">Enviar</button>
-    </form>
+    <p>Feu clic al següent enllaç per omplir el Google Form:</p>
+    <a href="[ENLLAÇ DEL GOOGLE FORM]" target="_blank" class="btn">Confirma assistència</a>
+  </section>
+
+  <!-- Regal -->
+  <section class="regal" id="regal">
+    <h2>Regal</h2>
+    <p>Si voleu fer-nos un regal, podeu fer-ho al següent número de compte:</p>
+    <p>XXXXXXXXXXXX</p>
   </section>
 
   <!-- Peu de pàgina -->
   <footer>
-    <p>Adrià & [Nom] · 2026</p>
+    <p>Alba & Adrià · 2026</p>
   </footer>
 
   <!-- JS Compte enrere + scroll suau -->
   <script>
-    // Compte enrere
-    const weddingDate = new Date("July 18, 2026 17:00:00").getTime();
+    const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
     const timer = document.getElementById("timer");
     setInterval(() => {
       const now = new Date().getTime();
@@ -84,7 +99,6 @@
       timer.innerHTML = `${days} dies · ${hours} h · ${mins} m · ${secs} s`;
     }, 1000);
 
-    // Scroll suau
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function(e) {
         e.preventDefault();
@@ -95,4 +109,6 @@
     });
   </script>
 </body>
+</html>
+
 </html>
