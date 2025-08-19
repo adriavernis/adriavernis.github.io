@@ -4,12 +4,283 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alba & Adrià • Ens casem!</title>
+    <!-- Fuentes de Google Fonts para un toque elegante -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /*
+        * Estilos CSS: el corazón del diseño
+        * Hemos utilizado variables para que sea fácil cambiar los colores si lo deseáis.
+        */
+        :root {
+            --color-granat: #800020;
+            --color-blanc: #fdfaf7;
+            --color-text-granat: #fdfaf7;
+            --color-text-blanc: #444;
+            --font-primary: 'Playfair Display', serif;
+            --font-secondary: 'Lora', serif;
+        }
+
+        /* Estilos generales del cuerpo */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-secondary);
+            line-height: 1.6;
+            color: var(--color-text-blanc);
+            background-color: var(--color-blanc);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        /* Títulos de sección */
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* L'estil de la línia sota el títol */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 2px;
+            background: currentColor;
+            margin: 15px auto 0;
+        }
+
+        /* Alternancia de colores en las secciones */
+        .section-granat {
+            background-color: var(--color-granat);
+            color: var(--color-text-granat);
+        }
+
+        .section-blanc {
+            background-color: var(--color-blanc);
+            color: var(--color-text-blanc);
+        }
+        
+        .section-granat .section-title {
+            color: var(--color-text-granat);
+        }
+        
+        .section-blanc .section-title {
+            color: var(--color-text-blanc);
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .navbar-logo {
+            font-family: var(--font-primary);
+            font-size: 1.6em;
+            color: var(--color-granat);
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        .navbar-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: var(--color-text-blanc);
+            font-weight: 400;
+            font-size: 1em;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .navbar-links a:hover {
+            color: var(--color-granat);
+        }
+
+        /* Sección de portada (Hero) */
+        .hero-section {
+            background: url('foto-parella.jpg') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--color-blanc);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-family: var(--font-primary);
+            font-size: 5.5em;
+            margin-bottom: 0;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-secondary);
+            font-size: 1.8em;
+            font-style: italic;
+            margin-top: 0;
+        }
+
+        .hero-divider {
+            width: 120px;
+            height: 3px;
+            background: var(--color-blanc);
+            margin: 20px auto;
+        }
+
+        .hero-date {
+            font-size: 1.5em;
+            letter-spacing: 3px;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        /* Temporizador de cuenta atrás */
+        .timer-display {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            color: var(--color-text-granat);
+        }
+
+        .timer-display small {
+            font-size: 0.6em;
+            font-weight: 300;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Sección de Celebración (mapa) */
+        .map-container {
+            padding-top: 20px;
+        }
+
+        .map-container iframe {
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            width: 100%;
+            height: 450px;
+            border: 5px solid var(--color-granat);
+        }
+
+        /* Botones de acción */
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--color-blanc);
+            color: var(--color-granat);
+        }
+
+        .btn-primary:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Pie de página */
+        .footer {
+            background-color: var(--color-granat);
+            color: var(--color-text-granat);
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9em;
+        }
+
+        /* Media Queries para dispositivos móviles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+
+            .navbar-logo {
+                margin-bottom: 10px;
+            }
+
+            .navbar-links {
+                gap: 15px;
+            }
+
+            .hero-title {
+                font-size: 3em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .timer-display {
+                font-size: 1.8em;
+            }
+        }
+    </style>
 </head>
 <body>
 
+    <!-- Barra de Navegación -->
     <nav class="navbar">
         <div class="navbar-logo">Alba & Adrià</div>
         <ul class="navbar-links">
@@ -22,6 +293,7 @@
         </ul>
     </nav>
 
+    <!-- Sección de Portada (Hero) con la foto de la pareja -->
     <header class="hero-section" id="inici">
         <div class="hero-content">
             <h1 class="hero-title">Alba & Adrià</h1>
@@ -31,6 +303,7 @@
         </div>
     </header>
 
+    <!-- Alterna a una sección de color granate -->
     <section class="section section-granat" id="compte">
         <div class="container">
             <h2 class="section-title">Compte enrere pel gran dia</h2>
@@ -38,6 +311,7 @@
         </div>
     </section>
 
+    <!-- Alterna a una sección de color blanco -->
     <section class="section section-blanc" id="historia">
         <div class="container">
             <h2 class="section-title">La nostra història</h2>
@@ -45,6 +319,7 @@
         </div>
     </section>
 
+    <!-- Alterna a una sección de color granate -->
     <section class="section section-granat" id="celebracio">
         <div class="container">
             <h2 class="section-title">Celebració</h2>
@@ -58,6 +333,7 @@
         </div>
     </section>
 
+    <!-- Alterna a una sección de color blanco -->
     <section class="section section-blanc" id="transport">
         <div class="container">
             <h2 class="section-title">Transport</h2>
@@ -66,6 +342,7 @@
         </div>
     </section>
 
+    <!-- Alterna a una sección de color granate -->
     <section class="section section-granat" id="rsvp">
         <div class="container">
             <h2 class="section-title">Confirma la teva assistència</h2>
@@ -74,10 +351,12 @@
         </div>
     </section>
 
+    <!-- Pie de Página -->
     <footer class="footer">
-        <p>© 2026 • Alba & Adrià. Tots els drets reservats.</p>
+        <p>&copy; 2026 • Alba & Adrià. Tots els drets reservats.</p>
     </footer>
 
+    <!-- Script de JavaScript (sin cambios) -->
     <script>
         const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
         const timer = document.getElementById("timer");
