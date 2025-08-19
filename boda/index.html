@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alba & Adrià • Ens casem!</title>
-    <!-- Fuentes de Google Fonts para un toque elegante -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fonts de Google Fonts per a un toc elegant -->
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /*
-        * Estilos CSS: el corazón del diseño
-        * Hemos utilizado variables para que sea fácil cambiar los colores si lo deseáis.
+        * Estils CSS: el cor del disseny
+        * Hem utilitzat variables per a que sigui fàcil canviar els colors si ho desitgeu.
         */
         :root {
             --color-granat: #800020;
@@ -18,9 +18,10 @@
             --color-text-blanc: #444;
             --font-primary: 'Playfair Display', serif;
             --font-secondary: 'Lora', serif;
+            --font-script: 'Sacramento', cursive; /* Nova font elegant */
         }
 
-        /* Estilos generales del cuerpo */
+        /* Estils generals del cos */
         html {
             scroll-behavior: smooth;
         }
@@ -40,7 +41,7 @@
             text-align: center;
         }
 
-        /* Títulos de sección */
+        /* Títols de secció */
         .section-title {
             font-family: var(--font-primary);
             font-size: 2.8em;
@@ -60,7 +61,7 @@
             margin: 15px auto 0;
         }
 
-        /* Alternancia de colores en las secciones */
+        /* Alternança de colors a les seccions */
         .section-granat {
             background-color: var(--color-granat);
             color: var(--color-text-granat);
@@ -79,7 +80,7 @@
             color: var(--color-text-blanc);
         }
 
-        /* Barra de navegación */
+        /* Barra de navegació */
         .navbar {
             position: fixed;
             top: 0;
@@ -96,8 +97,8 @@
         }
 
         .navbar-logo {
-            font-family: var(--font-primary);
-            font-size: 1.6em;
+            font-family: var(--font-script); /* Font canviada */
+            font-size: 1.8em;
             color: var(--color-granat);
             font-style: italic;
             font-weight: 700;
@@ -124,7 +125,7 @@
             color: var(--color-granat);
         }
 
-        /* Sección de portada (Hero) */
+        /* Secció de portada (Hero) */
         .hero-section {
             background: url('foto-parella.jpg') no-repeat center center/cover;
             height: 100vh;
@@ -155,7 +156,7 @@
         }
 
         .hero-title {
-            font-family: var(--font-primary);
+            font-family: var(--font-script); /* Font canviada */
             font-size: 5.5em;
             margin-bottom: 0;
             line-height: 1.1;
@@ -183,36 +184,45 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Temporizador de cuenta atrás */
+        /* Temporitzador de compte enrere (ara en horitzontal) */
         .timer-display {
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
             font-size: 2.5em;
             letter-spacing: 1px;
             color: var(--color-text-granat);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        .timer-display small {
-            font-size: 0.6em;
+        .timer-display .time-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .timer-display .time-item small {
+            font-size: 0.5em; /* Lletra més petita per a "dies", "h", etc. */
             font-weight: 300;
-            display: block;
             margin-top: 5px;
         }
-
-        /* Sección de Celebración (mapa) */
-        .map-container {
-            padding-top: 20px;
+        
+        /* Estil per al link d'ubicació */
+        .location-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: var(--color-text-granat);
+            text-decoration: underline;
+            font-size: 1.2em;
+        }
+        
+        .location-link:hover {
+            color: #d1d1d1;
         }
 
-        .map-container iframe {
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            width: 100%;
-            height: 450px;
-            border: 5px solid var(--color-granat);
-        }
-
-        /* Botones de acción */
+        /* Botons d'acció */
         .btn {
             display: inline-block;
             padding: 15px 40px;
@@ -235,8 +245,16 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
+        
+        /* Estil per al número de compte (ajustat per ser menys prominent) */
+        .bank-account {
+            font-family: var(--font-primary);
+            font-size: 1.2em; /* Mida de lletra reduïda */
+            font-weight: 400; /* Bolder reduïda */
+            color: var(--color-text-blanc);
+        }
 
-        /* Pie de página */
+        /* Peu de pàgina */
         .footer {
             background-color: var(--color-granat);
             color: var(--color-text-granat);
@@ -245,7 +263,7 @@
             font-size: 0.9em;
         }
 
-        /* Media Queries para dispositivos móviles */
+        /* Media Queries per a dispositius mòbils */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -280,7 +298,7 @@
 </head>
 <body>
 
-    <!-- Barra de Navegación -->
+    <!-- Barra de Navegació -->
     <nav class="navbar">
         <div class="navbar-logo">Alba & Adrià</div>
         <ul class="navbar-links">
@@ -290,20 +308,21 @@
             <li><a href="#celebracio">Celebració</a></li>
             <li><a href="#transport">Transport</a></li>
             <li><a href="#rsvp">Confirma assistència</a></li>
+            <li><a href="#regal">Regal</a></li> <!-- Enllaç a la nova secció -->
         </ul>
     </nav>
 
-    <!-- Sección de Portada (Hero) con la foto de la pareja -->
+    <!-- Secció de Portada (Hero) amb la foto de la parella -->
     <header class="hero-section" id="inici">
         <div class="hero-content">
             <h1 class="hero-title">Alba & Adrià</h1>
             <p class="hero-subtitle">Ens casem!</p>
             <div class="hero-divider"></div>
-            <p class="hero-date">05 • 09 • 2026 • 17:30h</p>
+            <p class="hero-date">05 • 09 • 2026</p>
         </div>
     </header>
 
-    <!-- Alterna a una sección de color granate -->
+    <!-- Alterna a una secció de color granat -->
     <section class="section section-granat" id="compte">
         <div class="container">
             <h2 class="section-title">Compte enrere pel gran dia</h2>
@@ -311,29 +330,27 @@
         </div>
     </section>
 
-    <!-- Alterna a una sección de color blanco -->
+    <!-- Alterna a una secció de color blanc -->
     <section class="section section-blanc" id="historia">
         <div class="container">
             <h2 class="section-title">La nostra història</h2>
-            <p>Aquí explicarem com ens vam conèixer i moments especials que volem compartir amb vosaltres. Aquesta secció pot incloure fotos y un texto más largo.</p>
+            <p>Aquí explicarem com ens vam conèixer i moments especials que volem compartir amb vosaltres. Aquesta secció pot incloure fotos i un text més llarg.</p>
         </div>
     </section>
 
-    <!-- Alterna a una sección de color granate -->
+    <!-- Alterna a una secció de color granat -->
     <section class="section section-granat" id="celebracio">
         <div class="container">
             <h2 class="section-title">Celebració</h2>
             <div class="location-details">
                 <p>El Dalmau, Masia Can Dalmau, 5, 08529 Barcelona</p>
-                <p>Hora: 18:00h</p>
+                <p>Hora: 17:30h</p>
             </div>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2975.253013894565!2d2.2359218765239965!3d41.979021671239855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a52662c4763c89%3A0xc3f8e5b4b105a507!2sMas%C3%ADa%20Can%20Dalmau!5e0!3m2!1sca!2ses!4v1700688329606!5m2!1sca!2ses" allowfullscreen="" loading="lazy"></iframe>
-            </div>
+            <a href="https://maps.app.goo.gl/ANx3SUFDKQHRBxpp7" target="_blank" class="location-link">Veure ubicació en Google Maps</a>
         </div>
     </section>
 
-    <!-- Alterna a una sección de color blanco -->
+    <!-- Alterna a una secció de color blanc -->
     <section class="section section-blanc" id="transport">
         <div class="container">
             <h2 class="section-title">Transport</h2>
@@ -342,7 +359,7 @@
         </div>
     </section>
 
-    <!-- Alterna a una sección de color granate -->
+    <!-- Alterna a una secció de color granat -->
     <section class="section section-granat" id="rsvp">
         <div class="container">
             <h2 class="section-title">Confirma la teva assistència</h2>
@@ -351,12 +368,19 @@
         </div>
     </section>
 
-    <!-- Pie de Página -->
+    <!-- Nova secció per al compte bancari, alternant a color blanc -->
+    <section class="section section-blanc" id="regal">
+        <div class="container">
+            <p class="bank-account">ES82 XXXXXXXXXXXX</p>
+        </div>
+    </section>
+
+    <!-- Peu de Pàgina -->
     <footer class="footer">
-        <p>&copy; 2026 • Alba & Adrià. Tots els drets reservats.</p>
+        <p>&copy; 2026 • Alba & Adrià.</p>
     </footer>
 
-    <!-- Script de JavaScript (sin cambios) -->
+    <!-- Script de JavaScript (sense canvis) -->
     <script>
         const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
         const timer = document.getElementById("timer");
@@ -367,7 +391,14 @@
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const secs = Math.floor((distance % (1000 * 60)) / 1000);
-            timer.innerHTML = `${days} <small>dies</small> • ${hours} <small>h</small> • ${mins} <small>m</small> • ${secs} <small>s</small>`;
+
+            // Codi per mostrar el temporitzador en format horitzontal
+            timer.innerHTML = `
+                <div class="time-item">${days}<small>dies</small></div>
+                <div class="time-item">${hours}<small>h</small></div>
+                <div class="time-item">${mins}<small>m</small></div>
+                <div class="time-item">${secs}<small>s</small></div>
+            `;
         }, 1000);
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -381,3 +412,4 @@
     </script>
 </body>
 </html>
+
