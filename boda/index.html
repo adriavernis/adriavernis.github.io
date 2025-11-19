@@ -5,21 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alba & Adrià • Ens casem!</title>
     
-    <!-- FAVICON: Ruta Corregida amb Placeholder (Original era fotochia.jpg) -->
-    <link rel="icon" type="image/png" href="https://placehold.co/64x64/600018/f7f3ed?text=A%26A">
-
-    <!-- Fonts: Inter (Base/Pràctic), Playfair Display (Títols), Parisienne (Script), Lora (Text) -->
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FAVICON: Afegeix la icona de la pestanya --><link rel="icon" type="image/jpeg" href="fotochia.jpg">
+    
+    <!-- Fonts: Inter (Base/Pràctic), Playfair Display (Títols), Parisienne (Script), Lora (Text) --><link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     
-    <!-- Icones Elegants -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Icones Elegants --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
             /* COLORS REFINADES */
             --color-granat: #600018; /* Bordeus Fosc */
-            --color-granat-transparent: rgba(96, 0, 24, 0.92); /* Granat amb transparència */
+            --color-granat-transparent: rgba(96, 0, 24, 0.85); /* Granat amb més transparència */
             --color-granat-light: #7a1c2a; 
             --color-blanc-fons: #f7f3ed; /* Blanc cremat suau, gairebé 'cream' */
             --color-accent: #b08d57; /* Soft Gold/Brass per a detalls i accents */
@@ -91,7 +88,7 @@
             color: var(--color-granat);
         }
 
-        .section-granat {
+       .section-granat {
             background-color: var(--color-granat-transparent); /* Semi-transparent */
             color: var(--color-text-light);
         }
@@ -101,12 +98,12 @@
             color: var(--color-text-light);
         }
         
-        .section-granat .section-title::after {
+       .section-granat .section-title::after {
             background: var(--color-accent) !important; /* Subratllat en color accent */
         }
 
         /* Subratllat dels títols (més subtil) */
-        .section-title::after {
+       .section-title::after {
             content: '';
             display: block;
             width: 100px;
@@ -116,7 +113,7 @@
             opacity: 0.8;
             transition: width 0.5s ease-out; /* Animació subtil */
         }
-        .section-title:hover::after {
+       .section-title:hover::after {
             width: 150px;
         }
         
@@ -126,8 +123,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(247, 243, 237, 0.95); /* Menys sòlid, més suau */
-            backdrop-filter: blur(10px); 
+            background-color: rgba(247, 243, 237, 0.85); /* Menys sòlid, més suau */
+            backdrop-filter: blur(8px); /* Blur lleugerament reduït */
             display: flex;
             justify-content: space-around; 
             align-items: center;
@@ -145,7 +142,7 @@
             font-weight: 400;
             transition: color 0.3s ease;
         }
-        .navbar-logo:hover {
+       .navbar-logo:hover {
             color: var(--color-accent);
         }
 
@@ -191,8 +188,7 @@
 
         /* HERO SECTION */
         .hero-section {
-            /* RUTA CORREGIDA amb Placeholder per a fotoparella.jpg */
-            background-image: url('https://placehold.co/1200x800/600018/f7f3ed?text=FOTO+PARELLA');
+            background-image: url('fotoparella.jpg'); 
             background-attachment: fixed;
             background-size: cover;
             background-position: center 30%; 
@@ -205,17 +201,17 @@
             position: relative;
         }
 
-        .hero-section::before {
+       .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.45); /* Overlay més lleuger */
+            background: rgba(0, 0, 0, 0.4); /* Overlay més lleuger */
             z-index: 1;
             /* Efecte Hypnotic: Animació subtil del gradient */
-            background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
+            background: linear-gradient(45deg, rgba(0,0,0,0.5) 0%, rgba(96, 0, 24, 0.15) 100%); /* Més transparent */
             animation: gradientShift 15s ease infinite alternate;
         }
 
@@ -292,22 +288,22 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100px; /* Mida fixa per al contenidor */
-            padding: 20px 0;
-            margin: 0 15px; /* Separació visual gran entre blocs */
+            width: 90px; /* Mida fixa per al contenidor, una mica més petita */
+            padding: 18px 0; /* Padding lleugerament reduït */
+            margin: 0 12px; /* Separació visual gran entre blocs */
             border: 1px solid var(--color-accent); /* Vora subtil accent */
             border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05); /* Fons gairebé transparent */
-            box-shadow: 0 0 15px rgba(176, 141, 87, 0.2);
-            transition: transform 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.03); /* Fons gairebé transparent amb més transparència */
+            box-shadow: 0 0 12px rgba(176, 141, 87, 0.15); /* Ombra més subtil */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .timer-display .time-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(176, 141, 87, 0.4);
+            transform: scale(1.03); /* Efecte hover lleugerament reduït */
+            box-shadow: 0 0 18px rgba(176, 141, 87, 0.3); /* Ombra hover més subtil */
         }
 
         .time-item .value {
-            font-size: 3.5em; /* Valor gran */
+            font-size: 3em; /* Valor una mica més petit */
             font-weight: 700;
             line-height: 1;
             color: var(--color-accent); /* El valor en color accent */
@@ -333,7 +329,7 @@
         }
 
         .event-item {
-            background-color: var(--color-blanc-fons);
+            background-color: rgba(247, 243, 237, 0.9); /* Fons de les cartes una mica transparent */
             color: var(--color-text-dark);
             padding: 35px;
             border-radius: 12px;
@@ -343,7 +339,7 @@
             border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .event-item:hover {
+       .event-item:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(0,0,0,0.1);
         }
@@ -377,7 +373,7 @@
             transition: color 0.3s ease;
         }
         
-        .location-link:hover {
+       .location-link:hover {
             color: var(--color-accent);
         }
         
@@ -404,7 +400,7 @@
             box-shadow: 0 8px 25px rgba(176, 141, 87, 0.3);
         }
 
-        .btn-primary:hover {
+       .btn-primary:hover {
             background-color: var(--color-granat);
             border-color: var(--color-granat);
             transform: translateY(-3px); 
@@ -423,7 +419,7 @@
             transform: skewX(-20deg);
         }
         
-        .btn-primary:hover::after {
+       .btn-primary:hover::after {
             left: 100%;
         }
 
@@ -448,11 +444,11 @@
                 padding: 15px 20px;
             }
 
-            .hero-title {
+           .hero-title {
                 font-size: 5em;
             }
 
-            .hero-subtitle {
+           .hero-subtitle {
                 font-size: 1.8em;
                 letter-spacing: 5px;
             }
@@ -461,20 +457,21 @@
                 padding: 70px 20px;
             }
             
-            .section-title {
+           .section-title {
                 font-size: 2.8em;
             }
 
-            .timer-display {
+           .timer-display {
                 font-size: 0.9em;
             }
             
-            .timer-display .time-item {
-                width: 85px;
-                margin: 0 8px;
+           .timer-display .time-item {
+                width: 80px; /* Més petit en mòbil */
+                margin: 0 6px; /* Separació reduïda en mòbil */
+                padding: 15px 0; /* Padding reduït en mòbil */
             }
             .time-item .value {
-                font-size: 3em;
+                font-size: 2.8em; /* Font size més petit en mòbil */
             }
 
             .event-grid {
@@ -485,8 +482,7 @@
 </head>
 <body>
 
-    <!-- MENÚ DE NAVEGACIÓ COMPLET -->
-    <nav class="navbar">
+    <!-- MENÚ DE NAVEGACIÓ COMPLET --><nav class="navbar">
         <a href="#inici" class="navbar-logo">Alba & Adrià</a>
         <ul class="navbar-links">
             <li><a href="#inici">Inici</a></li>
@@ -498,8 +494,7 @@
         </ul>
     </nav>
 
-    <!-- HEADER/HERO SECTION -->
-    <header class="hero-section" id="inici">
+    <!-- HEADER/HERO SECTION --><header class="hero-section" id="inici">
         <div class="hero-content">
             <h1 class="hero-title">Alba & Adrià</h1>
             <p class="hero-subtitle">Ens casem!</p>
@@ -508,40 +503,34 @@
         </div>
     </header>
 
-    <!-- COMPTE ENRERE (GRANAT) -->
-    <section class="section section-granat reveal" id="compte">
+    <!-- COMPTE ENRERE (GRANAT) --><section class="section section-granat reveal" id="compte">
         <div class="container">
             <h2 class="section-title">Compte enrere</h2>
-            <!-- El JS injectarà el nou format de temporitzador aquí -->
-            <div id="timer" class="timer-display"></div>
+            <!-- El JS injectarà el nou format de temporitzador aquí --><div id="timer" class="timer-display"></div>
         </div>
     </section>
 
-    <!-- HISTÒRIA/BENVINGUDA (BLANC) -->
-    <section class="section section-blanc reveal" id="historia">
+    <!-- HISTÒRIA/BENVINGUDA (BLANC) --><section class="section section-blanc reveal" id="historia">
         <div class="container">
             <h2 class="section-title">Ho volem celebrar amb tu!</h2>
             <p>Després de tants anys i tants moments, ha arribat el moment de segellar el nostre amor. Per a nosaltres, el més important d'aquest dia és compartir-lo amb vosaltres, les persones que heu estat al nostre costat. Prepareu-vos per riure, ballar i brindar! Gràcies per ser-hi sempre.</p>
         </div>
     </section>
 
-    <!-- PROGRAMA I LLOC (GRANAT) -->
-    <section class="section section-granat reveal" id="programa">
+    <!-- PROGRAMA I LLOC (GRANAT) --><section class="section section-granat reveal" id="programa">
         <div class="container">
             <h2 class="section-title">El Programa del Dia</h2>
             <p>Tot esdeveniment tindrà lloc al mateix lloc: un espai màgic on la festa durarà fins que surti el sol.</p>
             
             <div class="event-grid">
-                <!-- CERIMÒNIA -->
-                <div class="event-item">
+                <!-- CERIMÒNIA --><div class="event-item">
                     <i class="fas fa-ring"></i>
                     <h3>Cerimònia</h3>
                     <p><strong>Hora:</strong> 17:30h</p>
                     <p>Començarem amb la part més emotiva, on ens donarem el "Sí, vull!".</p>
                 </div>
                 
-                <!-- CONVIDADA I FESTA -->
-                <div class="event-item">
+                <!-- CONVIDADA I FESTA --><div class="event-item">
                     <i class="fas fa-champagne-glasses"></i>
                     <h3>Banquet & Festa</h3>
                     <p><strong>Lloc:</strong> El Dalmau</p>
@@ -552,8 +541,7 @@
         </div>
     </section>
 
-    <!-- TRANSPORT (BLANC) -->
-    <section class="section section-blanc reveal" id="transport">
+    <!-- TRANSPORT (BLANC) --><section class="section section-blanc reveal" id="transport">
         <div class="container">
             <h2 class="section-title">Transport</h2>
             <i class="fas fa-bus-simple" style="font-size: 3em; color: var(--color-accent); margin-bottom: 20px;"></i>
@@ -563,8 +551,7 @@
         </div>
     </section>
 
-    <!-- RSVP (GRANAT) -->
-    <section class="section section-granat reveal" id="rsvp">
+    <!-- RSVP (GRANAT) --><section class="section section-granat reveal" id="rsvp">
         <div class="container">
             <h2 class="section-title">Confirma la teva assistència</h2>
             <i class="fas fa-envelope-open-text" style="font-size: 3em; color: var(--color-accent); margin-bottom: 10px;"></i>
@@ -573,13 +560,11 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
+    <!-- FOOTER --><footer class="footer">
         <p>&copy; 2026 • Alba & Adrià • Disseny per a un dia perfecte</p>
     </footer>
 
-    <!-- SCRIPT (Compte enrere, Scroll i Efecte Reveal) -->
-    <script>
+    <!-- SCRIPT (Compte enrere, Scroll i Efecte Reveal) --><script>
         const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
         const timer = document.getElementById("timer");
         
