@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alba & Adrià • Ens casem!</title>
-    
+    
         <link rel="icon" type="image/jpeg" href="fotochia.jpg">
 
         <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    
+    
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    
     <style>
         :root {
             /* COLORS REFINADES */
@@ -41,11 +41,19 @@
             font-family: var(--font-secondary);
             line-height: 1.7;
             color: var(--color-text-dark);
-            background: var(--color-blanc-fons);
-            /* Aquest fons subtil es veurà a través de les seccions granat transparents */
-            background-image: radial-gradient(circle at top left, var(--color-blanc-fons) 0%, #fefcfb 70%); 
+            /* ELIMINAT: Fons antic de color */
             overflow-x: hidden;
             transition: background 1s ease;
+            
+            /* 1. FONS DE PÀGINA AMB FOTOPARELLA.JPG */
+            background-image: url('fotoparella.jpg');
+            background-attachment: fixed; /* Per a escriptori: efecte paral·lax subtil */
+            background-size: cover;
+            background-position: center center;
+            
+            /* CAPA BLANCA AMB TRANSPARÈNCIA PER MILLOR LLEGIBILITAT */
+            background-color: rgba(247, 243, 237, 0.85); /* 85% d'opacitat del color blanc fons */
+            background-blend-mode: overlay; /* Combina la capa de color amb la imatge de fons */
         }
 
         /* Animació de Revelació (Fade-In Up) */
@@ -95,12 +103,12 @@
             background-color: var(--color-granat-transparent); 
             color: var(--color-text-light);
         }
-        
+        
         /* Títols dins de seccions granat es veuen blancs/accent */
         .section-granat .section-title {
             color: var(--color-text-light);
         }
-        
+        
         .section-granat .section-title::after {
             background: var(--color-accent) !important; /* Subratllat en color accent */
         }
@@ -119,7 +127,7 @@
         .section-title:hover::after {
             width: 150px;
         }
-        
+        
         /* NAVBAR FIXA */
         .navbar {
             position: fixed;
@@ -166,7 +174,7 @@
         .navbar-logo:hover .logo-icon {
             border-color: var(--color-granat); /* Canvi de color del marc en hover */
         }
-        
+        
         .navbar-links {
             display: flex;
             gap: 40px; /* Separació mínima entre blocs */
@@ -186,7 +194,7 @@
             letter-spacing: 1px;
             transition: color 0.3s ease;
         }
-        
+        
         .navbar-links a::after { 
             content: '';
             display: block;
@@ -202,17 +210,15 @@
         .navbar-links a:hover {
             color: var(--color-accent);
         }
-        
+        
         .navbar-links a:hover::after {
             width: 100%;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION: ELIMINAT EL FONS, JA ÉS AL BODY */
         .hero-section {
-            background-image: url('fotoparella.jpg'); 
-            background-attachment: fixed; /* Mantenim fixed per a escriptori */
-            background-size: cover;
-            background-position: center 30%; 
+            background-image: none; /* Elimina la imatge de fons del hero */
+            background-attachment: scroll; /* S'assegura que no es comporti de manera estranya */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -229,19 +235,21 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Mantenim l'overlay subtil */
+            /* Overlay fosc: essencial per a contrast si la foto és clara */
             background: rgba(0, 0, 0, 0.45); 
             z-index: 1;
-            /* Efecte Hypnotic: Animació subtil del gradient */
+            /* Efecte Hypnotic amb transparents per deixar veure el fons */
             background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
             animation: gradientShift 15s ease infinite alternate;
+            /* Nova propietat per combinar l'overlay amb la imatge del body */
+            mix-blend-mode: multiply; 
         }
 
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
-        
+        
         .hero-content {
             position: relative;
             z-index: 2;
@@ -263,7 +271,7 @@
             letter-spacing: 3px;
             font-weight: 400;
         }
-        
+        
         .hero-subtitle {
             font-family: var(--font-primary);
             font-size: 2.5em;
@@ -271,7 +279,6 @@
             margin-top: 5px;
             margin-bottom: 25px;
             letter-spacing: 8px; /* Més separació de lletres */
-            text-transform: uppercase;
             color: var(--color-accent); /* Color accent per al subtítol */
         }
 
@@ -304,7 +311,7 @@
             flex-wrap: wrap;
             text-align: center;
         }
-        
+        
         .timer-display .time-item {
             display: flex;
             flex-direction: column;
@@ -325,13 +332,14 @@
         }
 
         .time-item .value {
-            font-size: 3.5em; /* Valor gran */
+            /* 2. MIDA MÉS PETITA PER ALS NÚMEROS DEL COMPTE ENRERE (de 3.5em a 2.8em) */
+            font-size: 2.8em; 
             font-weight: 700;
             line-height: 1;
             color: var(--color-accent); /* El valor en color accent */
             transition: all 0.2s ease-out;
         }
-        
+        
         .time-item small {
             font-size: 0.7em;
             font-weight: 300;
@@ -340,7 +348,7 @@
             margin-top: 10px;
             color: var(--color-text-light);
         }
-        
+        
         /* DETALLS ESDEVENIMENT (CELEBRACIÓ/PROGRAMA) */
         .event-grid {
             display: grid;
@@ -394,11 +402,11 @@
             color: var(--color-granat-light);
             transition: color 0.3s ease;
         }
-        
+        
         .location-link:hover {
             color: var(--color-accent);
         }
-        
+        
         /* BOTONS */
         .btn {
             display: inline-block;
@@ -428,7 +436,7 @@
             transform: translateY(-3px); 
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
-        
+        
         .btn-primary::after { /* Efecte de llampada elegant */
             content: '';
             position: absolute;
@@ -440,7 +448,7 @@
             transition: all 0.4s ease-in-out;
             transform: skewX(-20deg);
         }
-        
+        
         .btn-primary:hover::after {
             left: 100%;
         }
@@ -457,20 +465,24 @@
 
         /* MEDIA QUERIES (ADAPTABILITAT) */
         @media (max-width: 900px) {
-            
-            /* CANVI CLAU PER A MÒBIL: Permet que la imatge es vegi bé a 100vh */
-            .hero-section {
-                /* background-attachment: fixed es comporta malament en mòbils,
-                   el canviem a scroll per garantir que la imatge ompli bé la pantalla. */
-                background-attachment: scroll; 
-                background-position: center center; /* Assegura centratge correcte */
-                height: 100vh; /* Mantenim 100% de l'alçada visible */
-            }
+            
+            /* 1. ADAPTACIÓ DEL FONS PER A MÒBIL */
+            body {
+                /* A Mòbil, background-attachment: fixed dóna problemes. Scroll garanteix que
+                   la imatge es vegi bé en la primera vista i s'ajusti amb la pantalla. */
+                background-attachment: scroll;
+            }
+
+            .hero-section {
+                background-attachment: scroll; 
+                background-position: center center; /* Assegura centratge correcte */
+                height: 100vh; /* Mantenim 100% de l'alçada visible */
+            }
 
             .navbar-links {
                 display: none; 
             }
-            
+            
             .navbar {
                 justify-content: center;
                 padding: 15px 20px;
@@ -484,11 +496,11 @@
                 font-size: 1.8em;
                 letter-spacing: 5px;
             }
-            
+            
             .container {
                 padding: 70px 20px;
             }
-            
+            
             .section-title {
                 font-size: 2.8em;
             }
@@ -496,13 +508,14 @@
             .timer-display {
                 font-size: 0.9em;
             }
-            
+            
             .timer-display .time-item {
                 width: 85px;
                 margin: 0 8px;
             }
             .time-item .value {
-                font-size: 3em;
+                /* 2. MIDA MÉS PETITA PER A MÒBIL */
+                font-size: 2.5em; 
             }
 
             .event-grid {
@@ -512,7 +525,7 @@
     </style>
 </head>
 <body>
-    
+    
         <nav class="navbar">
                 <a href="#inici" class="navbar-logo">
                         <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A" onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';" />
@@ -555,7 +568,7 @@
         <div class="container">
             <h2 class="section-title">El Programa del Dia</h2>
             <p>Tot esdeveniment tindrà lloc al mateix lloc: un espai màgic on la festa durarà fins que surti el sol.</p>
-            
+            
             <div class="event-grid">
                                 <div class="event-item">
                     <i class="fas fa-ring"></i>
@@ -563,7 +576,7 @@
                     <p><strong>Hora:</strong> 17:30h</p>
                     <p>Començarem amb la part més emotiva, on ens donarem el "Sí, vull!".</p>
                 </div>
-                
+                
                                 <div class="event-item">
                     <i class="fas fa-champagne-glasses"></i>
                     <h3>Banquet & Festa</h3>
@@ -601,7 +614,7 @@
         <script>
         const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
         const timer = document.getElementById("timer");
-        
+        
         // Funció d'actualització del temporitzador amb el nou format
         const updateTimer = () => {
             const now = new Date().getTime();
@@ -628,7 +641,7 @@
                 <div class="time-item"><div class="value">${pad(secs)}</div><small>Segons</small></div>
             `;
         };
-        
+        
         // Inici del temporitzador
         const interval = setInterval(updateTimer, 1000);
         updateTimer(); // Executa una vegada immediatament per evitar el parpelleig
@@ -650,7 +663,7 @@
                 }
             });
         });
-        
+        
         // 2. Efecte de Revelació (Reveal on Scroll)
         const revealElements = document.querySelectorAll('.reveal');
 
