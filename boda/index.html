@@ -19,11 +19,10 @@
         :root {
             /* COLORS REFINADES */
             --color-granat: #600018; /* Bordeus Fosc */
-            /* TRANSPARÈNCIA: Per a seccions fosques (granat), es veurà la foto per sota */
+            /* TRANSPARÈNCIA AJUSTADA: De 0.92 a 0.75 per mostrar el fons */
             --color-granat-transparent: rgba(96, 0, 24, 0.75); 
             --color-granat-light: #7a1c2a; 
-            /* NOU: Color blanc cremat (ara transparent) per veure la foto de fons */
-            --color-blanc-fons-transparent: rgba(247, 243, 237, 0.9); 
+            --color-blanc-fons: #f7f3ed; /* Blanc cremat suau, gairebé 'cream' */
             --color-accent: #b08d57; /* Soft Gold/Brass per a detalls i accents */
             --color-text-dark: #333333; /* Gris fosc per al cos de text */
             --color-text-light: #fdfaf7;
@@ -39,23 +38,23 @@
             scroll-behavior: smooth;
         }
 
-        /* --- NOU: FONS DE PÀGINA COMPLERT AMB FOTO --- */
+        /* FONS DE PÀGINA COMPLET AMB IMATGE - NOVA IMPLEMENTACIÓ */
         body {
             margin: 0;
             font-family: var(--font-secondary);
             line-height: 1.7;
             color: var(--color-text-dark);
+            
+            /* Configuració de la imatge de fons per a tota la pàgina */
+            background-image: url('fotoparella.jpg');
+            background-size: cover; /* Assegura que la imatge cobreix tota l'àrea */
+            background-attachment: fixed; /* Fixa la imatge per a l'efecte parallax */
+            background-position: center center; /* Centrat per a una bona visualització en mòbil */
+            background-repeat: no-repeat;
+            
             overflow-x: hidden;
             transition: background 1s ease;
-
-            /* PROPIETATS PER AL FONS DE FOTO EN TOTA LA PÀGINA */
-            background-image: url('fotoparella.jpg'); 
-            background-size: cover; /* Assegura que cobreixi tota la pantalla, clau per a mòbil */
-            background-position: center center; /* Centra la imatge */
-            background-attachment: fixed; /* Efecte Parallax per a que la foto no es mogui */
-            background-color: #f7f3ed; /* Color de fallback si la imatge no carrega */
         }
-        /* ----------------------------------------------- */
 
         /* Animació de Revelació (Fade-In Up) */
         .reveal {
@@ -99,18 +98,10 @@
             color: var(--color-granat);
         }
 
-        /* SECCIÓ BLANCA - Feta transparent per a l'efecte de fons de foto */
-        .section-blanc {
-            background-color: var(--color-blanc-fons-transparent); /* Semi-transparent */
-            color: var(--color-text-dark);
-            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
-        }
-        
         .section-granat {
-            /* Ja utilitza la transparència per defecte (0.75) */
+            /* USA la nova transparència */
             background-color: var(--color-granat-transparent); 
             color: var(--color-text-light);
-            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
         }
         
         /* Títols dins de seccions granat es veuen blancs/accent */
@@ -143,8 +134,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            /* Semi-transparent per veure lleugerament la foto */
-            background-color: rgba(247, 243, 237, 0.95); 
+            background-color: rgba(247, 243, 237, 0.95); /* Menys sòlid, més suau */
             backdrop-filter: blur(10px); 
             display: flex;
             justify-content: space-around; 
@@ -225,9 +215,8 @@
             width: 100%;
         }
 
-        /* HERO SECTION - ARA SENSE BACKGROUND-IMAGE */
+        /* HERO SECTION - Sense imatge de fons, es veu la del <body> */
         .hero-section {
-            /* BACKGROUND-IMAGE ELIMINAT - ARA ÉS AL BODY */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -244,12 +233,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Overlay per a millor contrast del text */
-            background: rgba(0, 0, 0, 0.45); 
-            z-index: 1;
-            /* Efecte Hypnotic: Animació subtil del gradient */
+            /* Overlay fosc amb animació */
             background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
             animation: gradientShift 15s ease infinite alternate;
+            z-index: 1;
         }
 
         @keyframes gradientShift {
@@ -340,7 +327,8 @@
         }
 
         .time-item .value {
-            font-size: 3.5em; /* Valor gran */
+            /* VALOR REDUÏT - Sol·licitat per l'usuari */
+            font-size: 2.8em; /* Originalment 3.5em. Reduït per petició. */
             font-weight: 700;
             line-height: 1;
             color: var(--color-accent); /* El valor en color accent */
@@ -366,8 +354,7 @@
         }
 
         .event-item {
-            /* Fons semi-transparent per veure el background del body */
-            background-color: var(--color-blanc-fons-transparent); 
+            background-color: var(--color-blanc-fons);
             color: var(--color-text-dark);
             padding: 35px;
             border-radius: 12px;
@@ -508,7 +495,8 @@
                 margin: 0 8px;
             }
             .time-item .value {
-                font-size: 3em;
+                /* VALOR REDUÏT EN MÒBIL - Sol·licitat per l'usuari */
+                font-size: 2.2em; /* Reduït, originalment 3em */
             }
 
             .event-grid {
