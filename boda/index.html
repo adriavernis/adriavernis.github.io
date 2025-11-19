@@ -1,697 +1,686 @@
 <!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alba & Adrià • Ens casem!</title>
-    
-    <!-- FAVICON: Afegeix la icona de la pestanya -->
-    <link rel="icon" type="image/jpeg" href="fotochia.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alba & Adrià • Ens casem!</title>
+    
+        <link rel="icon" type="image/jpeg" href="fotochia.jpg">
 
-    <!-- Fonts: Inter (Base/Pràctic), Playfair Display (Títols), Parisienne (Script), Lora (Text) -->
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    
-    <!-- Icones Elegants -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <style>
-        :root {
-            /* COLORS REFINADES */
-            --color-granat: #600018; /* Bordeus Fosc */
-            /* TRANSPARÈNCIA: Per a seccions fosques (granat), es veurà la foto per sota */
-            --color-granat-transparent: rgba(96, 0, 24, 0.75); 
-            --color-granat-light: #7a1c2a; 
-            /* NOU: Color blanc cremat (ara transparent) per veure la foto de fons */
-            --color-blanc-fons-transparent: rgba(247, 243, 237, 0.9); 
-            --color-accent: #b08d57; /* Soft Gold/Brass per a detalls i accents */
-            --color-text-dark: #333333; /* Gris fosc per al cos de text */
-            --color-text-light: #fdfaf7;
+        <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            /* COLORS REFINADES */
+            --color-granat: #600018; /* Bordeus Fosc */
+            /* TRANSPARÈNCIA: Per a seccions fosques (granat), es veurà la foto per sota */
+            --color-granat-transparent: rgba(96, 0, 24, 0.75); 
+            --color-granat-light: #7a1c2a; 
+            /* NOU: Color blanc cremat (ara transparent) per veure la foto de fons */
+            --color-blanc-fons-transparent: rgba(247, 243, 237, 0.9); 
+            --color-accent: #b08d57; /* Soft Gold/Brass per a detalls i accents */
+            --color-text-dark: #333333; /* Gris fosc per al cos de text */
+            --color-text-light: #fdfaf7;
+            
+            /* NOVA VARIABLE PER AL TEXT DE LA CAPÇALERA */
+            --color-text-hero: white; /* Color blanc pur per contrast */
+            
 
-            /* FONTS */
-            --font-primary: 'Playfair Display', serif;
-            --font-secondary: 'Lora', serif;
-            --font-script: 'Parisienne', cursive;
-            --font-sans: 'Inter', sans-serif; /* Nova font Inter */
-        }
+            /* FONTS */
+            --font-primary: 'Playfair Display', serif;
+            --font-secondary: 'Lora', serif;
+            --font-script: 'Parisienne', cursive;
+            --font-sans: 'Inter', sans-serif; /* Nova font Inter */
+        }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html {
+            scroll-behavior: smooth;
+        }
 
-        /* --- NOU: FONS DE PÀGINA COMPLERT AMB FOTO --- */
-        body {
-            margin: 0;
-            font-family: var(--font-secondary);
-            line-height: 1.7;
-            color: var(--color-text-dark);
-            overflow-x: hidden;
-            transition: background 1s ease;
+        /* --- NOU: FONS DE PÀGINA COMPLERT AMB FOTO --- */
+        body {
+            margin: 0;
+            font-family: var(--font-secondary);
+            line-height: 1.7;
+            color: var(--color-text-dark);
+            overflow-x: hidden;
+            transition: background 1s ease;
 
-            /* PROPIETATS PER AL FONS DE FOTO EN TOTA LA PÀGINA */
-            background-image: url('fotoparella.jpg'); 
-            background-size: cover; /* Assegura que cobreixi tota la pantalla, clau per a mòbil */
-            background-position: center center; /* Centra la imatge */
-            background-attachment: fixed; /* Efecte Parallax per a que la foto no es mogui */
-            background-color: #f7f3ed; /* Color de fallback si la imatge no carrega */
-        }
-        /* ----------------------------------------------- */
+            /* PROPIETATS PER AL FONS DE FOTO EN TOTA LA PÀGINA */
+            background-image: url('fotoparella.jpg'); 
+            background-size: cover; /* Assegura que cobreixi tota la pantalla, clau per a mòbil */
+            background-position: center center; /* Centra la imatge */
+            background-attachment: fixed; /* Efecte Parallax per a que la foto no es mogui */
+            background-color: #f7f3ed; /* Color de fallback si la imatge no carrega */
+        }
+        /* ----------------------------------------------- */
 
-        /* Animació de Revelació (Fade-In Up) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.17, 0.55, 0.55, 1), transform 1s cubic-bezier(0.17, 0.55, 0.55, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Animació de Revelació (Fade-In Up) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.17, 0.55, 0.55, 1), transform 1s cubic-bezier(0.17, 0.55, 0.55, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-        /* Receptari Universal */
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+        /* Receptari Universal */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-        /* CONTENIDOR */
-        .container {
-            max-width: 1100px; 
-            margin: 0 auto;
-            padding: 100px 30px; /* Més espai vertical */
-            text-align: center;
-        }
+        /* CONTENIDOR */
+        .container {
+            max-width: 1100px; 
+            margin: 0 auto;
+            padding: 100px 30px; /* Més espai vertical */
+            text-align: center;
+        }
 
-        .container p {
-            font-size: 1.05em;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 20px auto;
-        }
+        .container p {
+            font-size: 1.05em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 20px auto;
+        }
 
-        /* SECCIONS */
-        .section-title {
-            font-family: var(--font-primary);
-            font-size: 3.5em; /* Més gran i impactant */
-            font-weight: 700;
-            margin-bottom: 25px;
-            letter-spacing: 2px;
-            color: var(--color-granat);
-        }
+        /* SECCIONS */
+        .section-title {
+            font-family: var(--font-primary);
+            font-size: 3.5em; /* Més gran i impactant */
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            color: var(--color-granat);
+        }
 
-        /* SECCIÓ BLANCA - Feta transparent per a l'efecte de fons de foto */
-        .section-blanc {
-            background-color: var(--color-blanc-fons-transparent); /* Semi-transparent */
-            color: var(--color-text-dark);
-            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
-        }
-        
-        .section-granat {
-            /* Ja utilitza la transparència per defecte (0.75) */
-            background-color: var(--color-granat-transparent); 
-            color: var(--color-text-light);
-            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
-        }
-        
-        /* Títols dins de seccions granat es veuen blancs/accent */
-        .section-granat .section-title {
-            color: var(--color-text-light);
-        }
-        
-        .section-granat .section-title::after {
-            background: var(--color-accent) !important; /* Subratllat en color accent */
-        }
+        /* SECCIÓ BLANCA - Feta transparent per a l'efecte de fons de foto */
+        .section-blanc {
+            background-color: var(--color-blanc-fons-transparent); /* Semi-transparent */
+            color: var(--color-text-dark);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
+        }
+        
+        .section-granat {
+            /* Ja utilitza la transparència per defecte (0.75) */
+            background-color: var(--color-granat-transparent); 
+            color: var(--color-text-light);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
+        }
+        
+        /* Títols dins de seccions granat es veuen blancs/accent */
+        .section-granat .section-title {
+            color: var(--color-text-light);
+        }
+        
+        .section-granat .section-title::after {
+            background: var(--color-accent) !important; /* Subratllat en color accent */
+        }
 
-        /* Subratllat dels títols (més subtil) */
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 2px;
-            background: var(--color-accent); /* Color accent */
-            margin: 15px auto 0;
-            opacity: 0.8;
-            transition: width 0.5s ease-out; /* Animació subtil */
-        }
-        .section-title:hover::after {
-            width: 150px;
-        }
-        
-        /* NAVBAR FIXA */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            /* Semi-transparent per veure lleugerament la foto */
-            background-color: rgba(247, 243, 237, 0.95); 
-            backdrop-filter: blur(10px); 
-            display: flex;
-            justify-content: space-around; 
-            align-items: center;
-            padding: 15px 50px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Ombra més lleugera */
-            z-index: 1000;
-            transition: all 0.5s ease;
-        }
+        /* Subratllat dels títols (més subtil) */
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: var(--color-accent); /* Color accent */
+            margin: 15px auto 0;
+            opacity: 0.8;
+            transition: width 0.5s ease-out; /* Animació subtil */
+        }
+        .section-title:hover::after {
+            width: 150px;
+        }
+        
+        /* NAVBAR FIXA */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Semi-transparent per veure lleugerament la foto */
+            background-color: rgba(247, 243, 237, 0.95); 
+            backdrop-filter: blur(10px); 
+            display: flex;
+            justify-content: space-around; 
+            align-items: center;
+            padding: 15px 50px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Ombra més lleugera */
+            z-index: 1000;
+            transition: all 0.5s ease;
+        }
 
-        /* LOGO AMB IMATGE - MODIFICAT */
-        .navbar-logo {
-            font-family: var(--font-script);
-            font-size: 2.2em;
-            color: var(--color-granat);
-            font-style: italic;
-            font-weight: 400;
-            transition: color 0.3s ease;
-            /* Flexbox per alinear la imatge */
-            display: flex; 
-            align-items: center;
-            gap: 10px; /* Espai entre la imatge i el text */
-        }
-        .navbar-logo:hover {
-            color: var(--color-accent);
-        }
+        /* LOGO AMB IMATGE - MODIFICAT */
+        .navbar-logo {
+            font-family: var(--font-script);
+            font-size: 2.2em;
+            color: var(--color-granat);
+            font-style: italic;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            /* Flexbox per alinear la imatge */
+            display: flex; 
+            align-items: center;
+            gap: 10px; /* Espai entre la imatge i el text */
+        }
+        .navbar-logo:hover {
+            color: var(--color-accent);
+        }
 
-        /* ESTIL DE LA IMATGE DEL LOGO - NOU */
-        .logo-icon {
-            width: 30px; 
-            height: 30px;
-            border-radius: 50%; /* Circular */
-            object-fit: cover;
-            border: 2px solid var(--color-accent); /* Marc elegant */
-            transition: border-color 0.3s ease;
-        }
-        .navbar-logo:hover .logo-icon {
-            border-color: var(--color-granat); /* Canvi de color del marc en hover */
-        }
-        
-        .navbar-links {
-            display: flex;
-            gap: 40px; /* Separació mínima entre blocs */
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
+        /* ESTIL DE LA IMATGE DEL LOGO - NOU */
+        .logo-icon {
+            width: 30px; 
+            height: 30px;
+            border-radius: 50%; /* Circular */
+            object-fit: cover;
+            border: 2px solid var(--color-accent); /* Marc elegant */
+            transition: border-color 0.3s ease;
+        }
+        .navbar-logo:hover .logo-icon {
+            border-color: var(--color-granat); /* Canvi de color del marc en hover */
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 40px; /* Separació mínima entre blocs */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
 
-        .navbar-links a {
-            font-family: var(--font-sans);
-            font-weight: 400; /* Més lleuger */
-            font-size: 1em;
-            text-transform: uppercase;
-            color: var(--color-text-dark);
-            padding: 5px 0;
-            position: relative;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        
-        .navbar-links a::after { 
-            content: '';
-            display: block;
-            width: 0;
-            height: 1px; /* Més fi */
-            background: var(--color-accent); /* Accent daurat */
-            transition: width 0.3s ease-out;
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-        }
+        .navbar-links a {
+            font-family: var(--font-sans);
+            font-weight: 400; /* Més lleuger */
+            font-size: 1em;
+            text-transform: uppercase;
+            color: var(--color-text-dark);
+            padding: 5px 0;
+            position: relative;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-links a::after { 
+            content: '';
+            display: block;
+            width: 0;
+            height: 1px; /* Més fi */
+            background: var(--color-accent); /* Accent daurat */
+            transition: width 0.3s ease-out;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+        }
 
-        .navbar-links a:hover {
-            color: var(--color-accent);
-        }
-        
-        .navbar-links a:hover::after {
-            width: 100%;
-        }
+        .navbar-links a:hover {
+            color: var(--color-accent);
+        }
+        
+        .navbar-links a:hover::after {
+            width: 100%;
+        }
 
-        /* HERO SECTION - ARA SENSE BACKGROUND-IMAGE */
-        .hero-section {
-            /* BACKGROUND-IMAGE ELIMINAT - ARA ÉS AL BODY */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--color-blanc-fons);
-            position: relative;
-        }
+        /* HERO SECTION - ARA SENSE BACKGROUND-IMAGE */
+        .hero-section {
+            /* BACKGROUND-IMAGE ELIMINAT - ARA ÉS AL BODY */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--color-blanc-fons);
+            position: relative;
+        }
 
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Overlay per a millor contrast del text */
-            background: rgba(0, 0, 0, 0.45); 
-            z-index: 1;
-            /* Efecte Hypnotic: Animació subtil del gradient */
-            background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
-            animation: gradientShift 15s ease infinite alternate;
-        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Overlay per a millor contrast del text */
+            background: rgba(0, 0, 0, 0.45); 
+            z-index: 1;
+            /* Efecte Hypnotic: Animació subtil del gradient */
+            background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
+            animation: gradientShift 15s ease infinite alternate;
+        }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-            animation: fadeIn 3s ease-out; /* Animació més lenta per elegància */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            animation: fadeIn 3s ease-out; /* Animació més lenta per elegància */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-        .hero-title {
-            font-family: var(--font-script);
-            font-size: 8em; /* Molt gran */
-            margin-bottom: 5px;
-            line-height: 1.1;
-            letter-spacing: 3px;
-            font-weight: 400;
-        }
-        
-        .hero-subtitle {
-            font-family: var(--font-primary);
-            font-size: 2.5em;
-            font-style: normal;
-            margin-top: 5px;
-            margin-bottom: 25px;
-            letter-spacing: 8px; /* Més separació de lletres */
-            text-transform: uppercase;
-            color: var(--color-accent); /* Color accent per al subtítol */
-        }
+        .hero-title {
+            font-family: var(--font-script);
+            font-size: 8em; /* Molt gran */
+            margin-bottom: 5px;
+            line-height: 1.1;
+            letter-spacing: 3px;
+            font-weight: 400;
+            color: var(--color-text-hero); /* **CANVI SOL·LICITAT** */
+        }
+        
+        .hero-subtitle {
+            font-family: var(--font-primary);
+            font-size: 2.5em;
+            font-style: normal;
+            margin-top: 5px;
+            margin-bottom: 25px;
+            letter-spacing: 8px; /* Més separació de lletres */
+            text-transform: uppercase;
+            color: var(--color-accent); /* Color accent per al subtítol */
+        }
 
-        .hero-divider {
-            width: 200px;
-            height: 1px; /* Molt fi */
-            background: var(--color-accent);
-            margin: 25px auto;
-            opacity: 0.8;
-        }
+        .hero-divider {
+            width: 200px;
+            height: 1px; /* Molt fi */
+            background: var(--color-accent);
+            margin: 25px auto;
+            opacity: 0.8;
+        }
 
-        .hero-date {
-            font-family: var(--font-sans);
-            font-size: 2em;
-            letter-spacing: 6px;
-            font-weight: 300;
-        }
+        .hero-date {
+            font-family: var(--font-sans);
+            font-size: 2em;
+            letter-spacing: 6px;
+            font-weight: 300;
+            color: var(--color-text-hero); /* **CANVI SOL·LICITAT** */
+        }
 
-        /* COMPTE ENRERE - NOU DISSENY SEGMENTAT */
-        .timer-display {
-            font-family: var(--font-sans);
-            font-weight: 700;
-            font-size: 1em; 
-            letter-spacing: 1px;
-            color: var(--color-text-light);
-            gap: 10px; /* Separació mínima entre blocs */
-            padding-top: 30px;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            text-align: center;
-        }
-        
-        .timer-display .time-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100px; /* Mida fixa per al contenidor */
-            padding: 20px 0;
-            margin: 0 15px; /* Separació visual gran entre blocs */
-            border: 1px solid var(--color-accent); /* Vora subtil accent */
-            border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05); /* Fons gairebé transparent */
-            box-shadow: 0 0 15px rgba(176, 141, 87, 0.2);
-            transition: transform 0.3s ease;
-        }
-        .timer-display .time-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(176, 141, 87, 0.4);
-        }
+        /* COMPTE ENRERE - NOU DISSENY SEGMENTAT */
+        .timer-display {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.8em; /* **CANVI SOL·LICITAT: Reducció de mida general** */
+            letter-spacing: 1px;
+            color: var(--color-text-light);
+            gap: 10px; /* Separació mínima entre blocs */
+            padding-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+        
+        .timer-display .time-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px; /* Mida fixa per al contenidor */
+            padding: 20px 0;
+            margin: 0 15px; /* Separació visual gran entre blocs */
+            border: 1px solid var(--color-accent); /* Vora subtil accent */
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.05); /* Fons gairebé transparent */
+            box-shadow: 0 0 15px rgba(176, 141, 87, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .timer-display .time-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(176, 141, 87, 0.4);
+        }
 
-        .time-item .value {
-            font-size: 3.5em; /* Valor gran */
-            font-weight: 700;
-            line-height: 1;
-            color: var(--color-accent); /* El valor en color accent */
-            transition: all 0.2s ease-out;
-        }
-        
-        .time-item small {
-            font-size: 0.7em;
-            font-weight: 300;
-            text-transform: uppercase;
-            display: block;
-            margin-top: 10px;
-            color: var(--color-text-light);
-        }
-        
-        /* DETALLS ESDEVENIMENT (CELEBRACIÓ/PROGRAMA) */
-        .event-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
-            gap: 40px;
-            margin-top: 50px;
-            text-align: left;
-        }
+        .time-item .value {
+            font-size: 2.5em; /* **CANVI SOL·LICITAT: Reducció de la mida del valor** */
+            font-weight: 700;
+            line-height: 1;
+            color: var(--color-accent); /* El valor en color accent */
+            transition: all 0.2s ease-out;
+        }
+        
+        .time-item small {
+            font-size: 0.7em;
+            font-weight: 300;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 10px;
+            color: var(--color-text-light);
+        }
+        
+        /* DETALLS ESDEVENIMENT (CELEBRACIÓ/PROGRAMA) */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+            gap: 40px;
+            margin-top: 50px;
+            text-align: left;
+        }
 
-        .event-item {
-            /* Fons semi-transparent per veure el background del body */
-            background-color: var(--color-blanc-fons-transparent); 
-            color: var(--color-text-dark);
-            padding: 35px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
+        .event-item {
+            /* Fons semi-transparent per veure el background del body */
+            background-color: var(--color-blanc-fons-transparent); 
+            color: var(--color-text-dark);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
 
-        .event-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-        }
+        .event-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
 
-        .event-item i {
-            font-size: 2.8em;
-            color: var(--color-accent); /* Icones en color accent */
-            margin-bottom: 20px;
-            animation: pulse 2s infinite alternate; /* Efecte subtil d'animació */
-        }
-        @keyframes pulse {
-            from { transform: scale(1); opacity: 0.9; }
-            to { transform: scale(1.05); opacity: 1; }
-        }
+        .event-item i {
+            font-size: 2.8em;
+            color: var(--color-accent); /* Icones en color accent */
+            margin-bottom: 20px;
+            animation: pulse 2s infinite alternate; /* Efecte subtil d'animació */
+        }
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 0.9; }
+            to { transform: scale(1.05); opacity: 1; }
+        }
 
-        .event-item h3 {
-            font-family: var(--font-primary);
-            font-size: 2em;
-            color: var(--color-granat);
-            margin-top: 0;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
+        .event-item h3 {
+            font-family: var(--font-primary);
+            font-size: 2em;
+            color: var(--color-granat);
+            margin-top: 0;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
 
-        .location-link {
-            display: inline-block;
-            font-family: var(--font-sans);
-            font-weight: 700;
-            margin-top: 20px;
-            color: var(--color-granat-light);
-            transition: color 0.3s ease;
-        }
-        
-        .location-link:hover {
-            color: var(--color-accent);
-        }
-        
-        /* BOTONS */
-        .btn {
-            display: inline-block;
-            font-family: var(--font-sans);
-            padding: 16px 50px;
-            margin-top: 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            position: relative;
-            overflow: hidden;
-        }
+        .location-link {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-weight: 700;
+            margin-top: 20px;
+            color: var(--color-granat-light);
+            transition: color 0.3s ease;
+        }
+        
+        .location-link:hover {
+            color: var(--color-accent);
+        }
+        
+        /* BOTONS */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            padding: 16px 50px;
+            margin-top: 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
 
-        .btn-primary {
-            background-color: var(--color-accent);
-            color: var(--color-text-light);
-            border: 2px solid var(--color-accent); 
-            box-shadow: 0 8px 25px rgba(176, 141, 87, 0.3);
-        }
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-text-light);
+            border: 2px solid var(--color-accent); 
+            box-shadow: 0 8px 25px rgba(176, 141, 87, 0.3);
+        }
 
-        .btn-primary:hover {
-            background-color: var(--color-granat);
-            border-color: var(--color-granat);
-            transform: translateY(-3px); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-        
-        .btn-primary::after { /* Efecte de llampada elegant */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: all 0.4s ease-in-out;
-            transform: skewX(-20deg);
-        }
-        
-        .btn-primary:hover::after {
-            left: 100%;
-        }
+        .btn-primary:hover {
+            background-color: var(--color-granat);
+            border-color: var(--color-granat);
+            transform: translateY(-3px); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary::after { /* Efecte de llampada elegant */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease-in-out;
+            transform: skewX(-20deg);
+        }
+        
+        .btn-primary:hover::after {
+            left: 100%;
+        }
 
-        /* FOOTER */
-        .footer {
-            background-color: var(--color-granat);
-            color: var(--color-text-light);
-            padding: 35px;
-            font-family: var(--font-sans);
-            letter-spacing: 1px;
-            text-align: center;
-        }
+        /* FOOTER */
+        .footer {
+            background-color: var(--color-granat);
+            color: var(--color-text-light);
+            padding: 35px;
+            font-family: var(--font-sans);
+            letter-spacing: 1px;
+            text-align: center;
+        }
 
-        /* MEDIA QUERIES (ADAPTABILITAT) */
-        @media (max-width: 900px) {
-            .navbar-links {
-                display: none; 
-            }
-            
-            .navbar {
-                justify-content: center;
-                padding: 15px 20px;
-            }
+        /* MEDIA QUERIES (ADAPTABILITAT) */
+        @media (max-width: 900px) {
+            .navbar-links {
+                display: none; 
+            }
+            
+            .navbar {
+                justify-content: center;
+                padding: 15px 20px;
+            }
 
-            .hero-title {
-                font-size: 5em;
-            }
+            .hero-title {
+                font-size: 5em;
+            }
 
-            .hero-subtitle {
-                font-size: 1.8em;
-                letter-spacing: 5px;
-            }
-            
-            .container {
-                padding: 70px 20px;
-            }
-            
-            .section-title {
-                font-size: 2.8em;
-            }
+            .hero-subtitle {
+                font-size: 1.8em;
+                letter-spacing: 5px;
+            }
+            
+            .container {
+                padding: 70px 20px;
+            }
+            
+            .section-title {
+                font-size: 2.8em;
+            }
 
-            .timer-display {
-                font-size: 0.9em;
-            }
-            
-            .timer-display .time-item {
-                width: 85px;
-                margin: 0 8px;
-            }
-            .time-item .value {
-                font-size: 3em;
-            }
+            .timer-display {
+                font-size: 0.8em; /* **CANVI SOL·LICITAT: Ajustat a la mida general reduïda** */
+            }
+            
+            .timer-display .time-item {
+                width: 85px;
+                margin: 0 8px;
+            }
+            .time-item .value {
+                font-size: 2.5em; /* **CANVI SOL·LICITAT: Ajustat a la mida del valor reduïda** */
+            }
 
-            .event-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+            .event-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    
-    <!-- MENÚ DE NAVEGACIÓ COMPLET -->
-    <nav class="navbar">
-        <!-- LOGO AMB IMATGE (fotochia.jpg) -->
-        <a href="#inici" class="navbar-logo">
-            <!-- Utilitzem un placeholder per si la imatge local no carrega -->
-            <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A" onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';" />
-            Alba & Adrià
-        </a>
-        <ul class="navbar-links">
-            <li><a href="#inici">Inici</a></li>
-            <li><a href="#compte">Compte Enrere</a></li>
-            <li><a href="#historia">Història</a></li>
-            <li><a href="#programa">Programa</a></li>
-            <li><a href="#transport">Transport</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-        </ul>
-    </nav>
+    
+        <nav class="navbar">
+                <a href="#inici" class="navbar-logo">
+                        <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A" onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';" />
+            Alba & Adrià
+        </a>
+        <ul class="navbar-links">
+            <li><a href="#inici">Inici</a></li>
+            <li><a href="#compte">Compte Enrere</a></li>
+            <li><a href="#historia">Història</a></li>
+            <li><a href="#programa">Programa</a></li>
+            <li><a href="#transport">Transport</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
 
-    <!-- HEADER/HERO SECTION -->
-    <header class="hero-section" id="inici">
-        <div class="hero-content">
-            <h1 class="hero-title">Alba & Adrià</h1>
-            <p class="hero-subtitle">Ens casem!</p>
-            <div class="hero-divider"></div>
-            <p class="hero-date">05 • 09 • 2026</p>
-        </div>
-    </header>
+        <header class="hero-section" id="inici">
+        <div class="hero-content">
+            <h1 class="hero-title">Alba & Adrià</h1>
+            <p class="hero-subtitle">Ens casem!</p>
+            <div class="hero-divider"></div>
+            <p class="hero-date">05 • 09 • 2026</p>
+        </div>
+    </header>
 
-    <!-- COMPTE ENRERE (GRANAT - ARA MÉS TRANSPARENT) -->
-    <section class="section section-granat reveal" id="compte">
-        <div class="container">
-            <h2 class="section-title">Compte enrere</h2>
-            <!-- El JS injectarà el nou format de temporitzador aquí -->
-            <div id="timer" class="timer-display"></div>
-        </div>
-    </section>
+        <section class="section section-granat reveal" id="compte">
+        <div class="container">
+            <h2 class="section-title">Compte enrere</h2>
+                        <div id="timer" class="timer-display"></div>
+        </div>
+    </section>
 
-    <!-- HISTÒRIA/BENVINGUDA (BLANC) -->
-    <section class="section section-blanc reveal" id="historia">
-        <div class="container">
-            <h2 class="section-title">Ho volem celebrar amb tu!</h2>
-            <p>Després de tants anys i tants moments, ha arribat el moment de segellar el nostre amor. Per a nosaltres, el més important d'aquest dia és compartir-lo amb vosaltres, les persones que heu estat al nostre costat. Prepareu-vos per riure, ballar i brindar! Gràcies per ser-hi sempre.</p>
-        </div>
-    </section>
+        <section class="section section-blanc reveal" id="historia">
+        <div class="container">
+            <h2 class="section-title">Ho volem celebrar amb tu!</h2>
+            <p>Després de tants anys i tants moments, ha arribat el moment de segellar el nostre amor. Per a nosaltres, el més important d'aquest dia és compartir-lo amb vosaltres, les persones que heu estat al nostre costat. Prepareu-vos per riure, ballar i brindar! Gràcies per ser-hi sempre.</p>
+        </div>
+    </section>
 
-    <!-- PROGRAMA I LLOC (GRANAT - ARA MÉS TRANSPARENT) -->
-    <section class="section section-granat reveal" id="programa">
-        <div class="container">
-            <h2 class="section-title">El Programa del Dia</h2>
-            <p>Tot esdeveniment tindrà lloc al mateix lloc: un espai màgic on la festa durarà fins que surti el sol.</p>
-            
-            <div class="event-grid">
-                <!-- CERIMÒNIA -->
-                <div class="event-item">
-                    <i class="fas fa-ring"></i>
-                    <h3>Cerimònia </h3>
-                    <p><strong>Hora:</strong> 17:30h</p>
-                    <p>Començarem amb la part més emotiva, on ens donarem el "Sí, vull!".</p>
-                </div>
-                
-                <!-- CONVIDADA I FESTA -->
-                <div class="event-item">
-                    <i class="fas fa-champagne-glasses"></i>
-                    <h3>Banquet & Festa</h3>
-                    <p><strong>Lloc:</strong> El Dalmau</p>
-                    <p>Masia Can Dalmau, 5, 08529 Barcelona</p>
-                    <a href="https://maps.app.goo.gl/ANx3SUFDKQHRBxpp7" target="_blank" class="location-link"><i class="fas fa-map-marker-alt"></i> Veure ubicació</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <section class="section section-granat reveal" id="programa">
+        <div class="container">
+            <h2 class="section-title">El Programa del Dia</h2>
+            <p>Tot esdeveniment tindrà lloc al mateix lloc: un espai màgic on la festa durarà fins que surti el sol.</p>
+            
+            <div class="event-grid">
+                                <div class="event-item">
+                    <i class="fas fa-ring"></i>
+                    <h3>Cerimònia </h3>
+                    <p><strong>Hora:</strong> 17:30h</p>
+                    <p>Començarem amb la part més emotiva, on ens donarem el "Sí, vull!".</p>
+                </div>
+                
+                                <div class="event-item">
+                    <i class="fas fa-champagne-glasses"></i>
+                    <h3>Banquet & Festa</h3>
+                    <p><strong>Lloc:</strong> El Dalmau</p>
+                    <p>Masia Can Dalmau, 5, 08529 Barcelona</p>
+                    <a href="https://maps.app.goo.gl/ANx3SUFDKQHRBxpp7" target="_blank" class="location-link"><i class="fas fa-map-marker-alt"></i> Veure ubicació</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- TRANSPORT (BLANC) -->
-    <section class="section section-blanc reveal" id="transport">
-        <div class="container">
-            <h2 class="section-title">Transport</h2>
-            <i class="fas fa-bus-simple" style="font-size: 3em; color: var(--color-accent); margin-bottom: 20px;"></i>
-            <p>Per facilitar-vos l'anada i la tornada, posarem a la vostra disposició dos autobúsos de cortesia amb sortida des de Vic, i tornada a la matinada.</p>
-            <p class="transport-note" style="font-weight: 700; color: var(--color-granat);">⚠ ATENCIÓ: Els horaris exactes i punts de recollida es publicaran aquí aproximadament 1 mes abans de l'enllaç.</p>
-            <p>Si veniu amb cotxe, el Dalmau disposa de pàrquing.</p>
-        </div>
-    </section>
+        <section class="section section-blanc reveal" id="transport">
+        <div class="container">
+            <h2 class="section-title">Transport</h2>
+            <i class="fas fa-bus-simple" style="font-size: 3em; color: var(--color-accent); margin-bottom: 20px;"></i>
+            <p>Per facilitar-vos l'anada i la tornada, posarem a la vostra disposició dos autobúsos de cortesia amb sortida des de Vic, i tornada a la matinada.</p>
+            <p class="transport-note" style="font-weight: 700; color: var(--color-granat);">⚠ ATENCIÓ: Els horaris exactes i punts de recollida es publicaran aquí aproximadament 1 mes abans de l'enllaç.</p>
+            <p>Si veniu amb cotxe, el Dalmau disposa de pàrquing.</p>
+        </div>
+    </section>
 
-    <!-- RSVP (GRANAT - ARA MÉS TRANSPARENT) -->
-    <section class="section section-granat reveal" id="rsvp">
-        <div class="container">
-            <h2 class="section-title">Confirma la teva assistència</h2>
-            <i class="fas fa-envelope-open-text" style="font-size: 3em; color: var(--color-accent); margin-bottom: 10px;"></i>
-            <p>És molt important que ens confirmeu la vostra assistència abans de la data límit. Feu clic al botó i ompliu el formulari de Google Forms.</p>
-            <a href="[ENLLAÇ DEL GOOGLE FORM]" target="_blank" class="btn btn-primary">Confirma assistència</a>
-        </div>
-    </section>
+        <section class="section section-granat reveal" id="rsvp">
+        <div class="container">
+            <h2 class="section-title">Confirma la teva assistència</h2>
+            <i class="fas fa-envelope-open-text" style="font-size: 3em; color: var(--color-accent); margin-bottom: 10px;"></i>
+            <p>És molt important que ens confirmeu la vostra assistència abans de la data límit. Feu clic al botó i ompliu el formulari de Google Forms.</p>
+            <a href="[ENLLAÇ DEL GOOGLE FORM]" target="_blank" class="btn btn-primary">Confirma assistència</a>
+        </div>
+    </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p>&copy; 2026 • Alba & Adrià • Disseny per a un dia perfecte</p>
-    </footer>
+        <footer class="footer">
+        <p>© 2026 • Alba & Adrià • Disseny per a un dia perfecte</p>
+    </footer>
 
-    <!-- SCRIPT (Compte enrere, Scroll i Efecte Reveal) -->
-    <script>
-        const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
-        const timer = document.getElementById("timer");
-        
-        // Funció d'actualització del temporitzador amb el nou format
-        const updateTimer = () => {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
+        <script>
+        const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
+        const timer = document.getElementById("timer");
+        
+        // Funció d'actualització del temporitzador amb el nou format
+        const updateTimer = () => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
 
-            if (distance < 0) {
-                clearInterval(interval);
-                timer.innerHTML = "<div style='font-family: var(--font-primary); font-size: 2em; color: var(--color-accent);'>JA SOM MARIT I MULLER!</div>";
-                return;
-            }
+            if (distance < 0) {
+                clearInterval(interval);
+                timer.innerHTML = "<div style='font-family: var(--font-primary); font-size: 2em; color: var(--color-accent);'>JA SOM MARIT I MULLER!</div>";
+                return;
+            }
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((distance % (1000 * 60)) / 1000);
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Funció per afegir zero a l'esquerra si és necessari
-            const pad = (num) => num < 10 ? '0' + num : num;
+            // Funció per afegir zero a l'esquerra si és necessari
+            const pad = (num) => num < 10 ? '0' + num : num;
 
-            timer.innerHTML = `
-                <div class="time-item"><div class="value">${days}</div><small>Dies</small></div>
-                <div class="time-item"><div class="value">${pad(hours)}</div><small>Hores</small></div>
-                <div class="time-item"><div class="value">${pad(mins)}</div><small>Minuts</small></div>
-                <div class="time-item"><div class="value">${pad(secs)}</div><small>Segons</small></div>
-            `;
-        };
-        
-        // Inici del temporitzador
-        const interval = setInterval(updateTimer, 1000);
-        updateTimer(); // Executa una vegada immediatament per evitar el parpelleig
+            timer.innerHTML = `
+                <div class="time-item"><div class="value">${days}</div><small>Dies</small></div>
+                <div class="time-item"><div class="value">${pad(hours)}</div><small>Hores</small></div>
+                <div class="time-item"><div class="value">${pad(mins)}</div><small>Minuts</small></div>
+                <div class="time-item"><div class="value">${pad(secs)}</div><small>Segons</small></div>
+            `;
+        };
+        
+        // Inici del temporitzador
+        const interval = setInterval(updateTimer, 1000);
+        updateTimer(); // Executa una vegada immediatament per evitar el parpelleig
 
-        // 1. Scroll suau i ajustat per la barra fixa
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute("href");
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = targetId === '#inici' ? 0 : targetElement.offsetTop - navbarHeight - 20; /* Més marge */
+        // 1. Scroll suau i ajustat per la barra fixa
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute("href");
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetId === '#inici' ? 0 : targetElement.offsetTop - navbarHeight - 20; /* Més marge */
 
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: "smooth"
-                    });
-                }
-            });
-        });
-        
-        // 2. Efecte de Revelació (Reveal on Scroll)
-        const revealElements = document.querySelectorAll('.reveal');
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        
+        // 2. Efecte de Revelació (Reveal on Scroll)
+        const revealElements = document.querySelectorAll('.reveal');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // Si la secció entra al viewport
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // Deixar d'observar un cop s'ha activat
-                    observer.unobserve(entry.target); 
-                }
-            });
-        }, {
-            // Activa quan el 10% de l'element és visible
-            threshold: 0.1 
-        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Si la secció entra al viewport
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Deixar d'observar un cop s'ha activat
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            // Activa quan el 10% de l'element és visible
+            threshold: 0.1 
+        });
 
-        revealElements.forEach(element => {
-            observer.observe(element);
-        });
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
 
-    </script>
+    </script>
 </body>
 </html>
