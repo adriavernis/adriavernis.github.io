@@ -19,10 +19,11 @@
         :root {
             /* COLORS REFINADES */
             --color-granat: #600018; /* Bordeus Fosc */
-            /* TRANSPARÈNCIA AJUSTADA: De 0.92 a 0.75 per mostrar el fons */
+            /* TRANSPARÈNCIA: Per a seccions fosques (granat), es veurà la foto per sota */
             --color-granat-transparent: rgba(96, 0, 24, 0.75); 
             --color-granat-light: #7a1c2a; 
-            --color-blanc-fons: #f7f3ed; /* Blanc cremat suau, gairebé 'cream' */
+            /* NOU: Color blanc cremat (ara transparent) per veure la foto de fons */
+            --color-blanc-fons-transparent: rgba(247, 243, 237, 0.9); 
             --color-accent: #b08d57; /* Soft Gold/Brass per a detalls i accents */
             --color-text-dark: #333333; /* Gris fosc per al cos de text */
             --color-text-light: #fdfaf7;
@@ -38,18 +39,23 @@
             scroll-behavior: smooth;
         }
 
-        /* FONS HIPNÒTIC SUBTIL */
+        /* --- NOU: FONS DE PÀGINA COMPLERT AMB FOTO --- */
         body {
             margin: 0;
             font-family: var(--font-secondary);
             line-height: 1.7;
             color: var(--color-text-dark);
-            background: var(--color-blanc-fons);
-            /* Aquest fons subtil es veurà a través de les seccions granat transparents */
-            background-image: radial-gradient(circle at top left, var(--color-blanc-fons) 0%, #fefcfb 70%); 
             overflow-x: hidden;
             transition: background 1s ease;
+
+            /* PROPIETATS PER AL FONS DE FOTO EN TOTA LA PÀGINA */
+            background-image: url('fotoparella.jpg'); 
+            background-size: cover; /* Assegura que cobreixi tota la pantalla, clau per a mòbil */
+            background-position: center center; /* Centra la imatge */
+            background-attachment: fixed; /* Efecte Parallax per a que la foto no es mogui */
+            background-color: #f7f3ed; /* Color de fallback si la imatge no carrega */
         }
+        /* ----------------------------------------------- */
 
         /* Animació de Revelació (Fade-In Up) */
         .reveal {
@@ -93,10 +99,18 @@
             color: var(--color-granat);
         }
 
+        /* SECCIÓ BLANCA - Feta transparent per a l'efecte de fons de foto */
+        .section-blanc {
+            background-color: var(--color-blanc-fons-transparent); /* Semi-transparent */
+            color: var(--color-text-dark);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
+        }
+        
         .section-granat {
-            /* USA la nova transparència */
+            /* Ja utilitza la transparència per defecte (0.75) */
             background-color: var(--color-granat-transparent); 
             color: var(--color-text-light);
+            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
         }
         
         /* Títols dins de seccions granat es veuen blancs/accent */
@@ -129,7 +143,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(247, 243, 237, 0.95); /* Menys sòlid, més suau */
+            /* Semi-transparent per veure lleugerament la foto */
+            background-color: rgba(247, 243, 237, 0.95); 
             backdrop-filter: blur(10px); 
             display: flex;
             justify-content: space-around; 
@@ -210,12 +225,9 @@
             width: 100%;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION - ARA SENSE BACKGROUND-IMAGE */
         .hero-section {
-            background-image: url('fotoparella.jpg'); 
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center 30%; 
+            /* BACKGROUND-IMAGE ELIMINAT - ARA ÉS AL BODY */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -232,7 +244,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Mantenim l'overlay subtil */
+            /* Overlay per a millor contrast del text */
             background: rgba(0, 0, 0, 0.45); 
             z-index: 1;
             /* Efecte Hypnotic: Animació subtil del gradient */
@@ -354,7 +366,8 @@
         }
 
         .event-item {
-            background-color: var(--color-blanc-fons);
+            /* Fons semi-transparent per veure el background del body */
+            background-color: var(--color-blanc-fons-transparent); 
             color: var(--color-text-dark);
             padding: 35px;
             border-radius: 12px;
@@ -561,7 +574,7 @@
                 <!-- CERIMÒNIA -->
                 <div class="event-item">
                     <i class="fas fa-ring"></i>
-                    <h3>Cerimònia </h3>
+                    <h3>Cerimònia </h3>
                     <p><strong>Hora:</strong> 17:30h</p>
                     <p>Començarem amb la part més emotiva, on ens donarem el "Sí, vull!".</p>
                 </div>
