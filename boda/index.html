@@ -38,20 +38,15 @@
             scroll-behavior: smooth;
         }
 
-        /* FONS DE PÀGINA COMPLET AMB IMATGE - NOVA IMPLEMENTACIÓ */
+        /* FONS HIPNÒTIC SUBTIL */
         body {
             margin: 0;
             font-family: var(--font-secondary);
             line-height: 1.7;
             color: var(--color-text-dark);
-            
-            /* Configuració de la imatge de fons per a tota la pàgina */
-            background-image: url('fotoparella.jpg');
-            background-size: cover; /* Assegura que la imatge cobreix tota l'àrea */
-            background-attachment: fixed; /* Fixa la imatge per a l'efecte parallax */
-            background-position: center center; /* Centrat per a una bona visualització en mòbil */
-            background-repeat: no-repeat;
-            
+            background: var(--color-blanc-fons);
+            /* Aquest fons subtil es veurà a través de les seccions granat transparents */
+            background-image: radial-gradient(circle at top left, var(--color-blanc-fons) 0%, #fefcfb 70%); 
             overflow-x: hidden;
             transition: background 1s ease;
         }
@@ -215,8 +210,12 @@
             width: 100%;
         }
 
-        /* HERO SECTION - Sense imatge de fons, es veu la del <body> */
+        /* HERO SECTION */
         .hero-section {
+            background-image: url('fotoparella.jpg'); 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center 30%; 
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -233,10 +232,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Overlay fosc amb animació */
+            /* Mantenim l'overlay subtil */
+            background: rgba(0, 0, 0, 0.45); 
+            z-index: 1;
+            /* Efecte Hypnotic: Animació subtil del gradient */
             background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
             animation: gradientShift 15s ease infinite alternate;
-            z-index: 1;
         }
 
         @keyframes gradientShift {
@@ -327,8 +328,7 @@
         }
 
         .time-item .value {
-            /* VALOR REDUÏT - Sol·licitat per l'usuari */
-            font-size: 2.8em; /* Originalment 3.5em. Reduït per petició. */
+            font-size: 3.5em; /* Valor gran */
             font-weight: 700;
             line-height: 1;
             color: var(--color-accent); /* El valor en color accent */
@@ -495,8 +495,7 @@
                 margin: 0 8px;
             }
             .time-item .value {
-                /* VALOR REDUÏT EN MÒBIL - Sol·licitat per l'usuari */
-                font-size: 2.2em; /* Reduït, originalment 3em */
+                font-size: 3em;
             }
 
             .event-grid {
