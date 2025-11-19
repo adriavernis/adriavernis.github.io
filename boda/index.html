@@ -31,8 +31,13 @@
         .container {
             max-width: 960px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
             text-align: center;
+        }
+
+        .container p {
+            font-size: 1.1em;
+            line-height: 1.8;
         }
 
         .section-title {
@@ -42,6 +47,7 @@
             margin-bottom: 20px;
             text-align: center;
             position: relative;
+            letter-spacing: 1px;
         }
 
         .section-title::after {
@@ -51,6 +57,7 @@
             height: 2px;
             background: currentColor;
             margin: 15px auto 0;
+            opacity: 0.7;
         }
 
         .section-granat {
@@ -132,6 +139,23 @@
             line-height: 1.1;
             font-weight: 400;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInDown 1.2s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .hero-subtitle {
@@ -140,6 +164,7 @@
             font-style: italic;
             margin-top: 0;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeIn 1.5s ease-out 0.3s both;
         }
 
         .hero-divider {
@@ -276,8 +301,8 @@
 
     <section class="section section-blanc" id="historia">
         <div class="container">
-            <h2 class="section-title">La nostra història</h2>
-            <p>Aquí explicarem com ens vam conèixer i moments especials que volem compartir amb vosaltres. Aquesta secció pot incloure fotos i un text més llarg.</p>
+            <h2 class="section-title">Ho volem celebrar amb tu!</h2>
+            <p style="font-size: 1.15em; line-height: 1.8; max-width: 700px; margin: 20px auto;">Ens fa molta il·lusió viure aquest dia amb la gent que ens importa. Volem riure, brindar i passar-ho bé amb vosaltres, perquè sou part del que ens ha portat fins aquí. Sense vosaltres, la festa no seria la mateixa!</p>
         </div>
     </section>
 
