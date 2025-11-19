@@ -38,6 +38,12 @@
             color: var(--color-text-blanc);
             background-color: var(--color-blanc);
             overflow-x: hidden; /* Evita scroll horitzontal */
+            /* FONS FIX AMB LA FOTO PER TOTA LA PÀGINA */
+            background-image: url('fotoparella.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Receptari Universal */
@@ -72,8 +78,15 @@
         }
 
         .section-granat {
-            background-color: var(--color-granat);
+            background-color: rgba(96, 0, 24, 0.92); /* Granat amb transparència */
             color: var(--color-text-granat);
+            backdrop-filter: blur(3px); /* Efecte blur suau */
+        }
+
+        .section-blanc {
+            background-color: rgba(253, 250, 247, 0.95); /* Blanc amb transparència */
+            color: var(--color-text-blanc);
+            backdrop-filter: blur(3px); /* Efecte blur suau */
         }
 
         /* Títols dins de seccions granat es veuen blancs */
@@ -161,11 +174,7 @@
 
         /* HERO SECTION */
         .hero-section {
-            /* Fons amb la vostra imatge. Recordeu que heu de tenir "fotoparella.jpg" a la mateixa carpeta per a que funcioni! */
-            background-image: url('fotoparella.jpg'); 
-            background-attachment: fixed; /* Efecte Parallax - molt elegant! */
-            background-size: cover;
-            background-position: center 30%; /* Ajustar la posició de la imatge */
+            /* Sense fons repetit aquí, ja que el body té el fons global */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -182,7 +191,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.55); /* Overlay lleugerament més fosc per contrastar amb el nou granat */
+            background: rgba(0, 0, 0, 0.55); /* Overlay lleugerament més fosc */
             z-index: 1;
         }
         
@@ -255,7 +264,7 @@
             justify-content: center;
             padding: 15px 15px;
             min-width: 100px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.15);
             border-radius: 10px;
             line-height: 1.2;
         }
@@ -278,18 +287,18 @@
         }
 
         .event-item {
-            background-color: var(--color-blanc);
+            background-color: rgba(253, 250, 247, 0.98);
             color: var(--color-text-blanc);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
         }
 
         .event-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         .event-item i {
@@ -348,16 +357,23 @@
 
         /* FOOTER */
         .footer {
-            background-color: var(--color-granat);
+            background-color: rgba(96, 0, 24, 0.95);
             color: var(--color-text-granat);
             padding: 35px;
             font-family: var(--font-sans);
             letter-spacing: 1px;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         /* MEDIA QUERIES (ADAPTABILITAT) */
         @media (max-width: 900px) {
+            body {
+                /* En mòbil, posicionem la imatge millor */
+                background-position: center center;
+                background-attachment: scroll; /* Millor rendiment en mòbil */
+            }
+
             .navbar-links {
                 display: none; /* Amaguem els enllaços a mòbil per simplificar */
             }
@@ -373,6 +389,7 @@
 
             .hero-subtitle {
                 font-size: 1.6em;
+                letter-spacing: 3px;
             }
             
             .container {
@@ -384,12 +401,42 @@
             }
 
             .timer-display {
-                font-size: 3em;
-                gap: 20px;
+                font-size: 2.5em;
+                gap: 15px;
             }
             
             .timer-display .time-item {
-                min-width: 80px;
+                min-width: 70px;
+                padding: 10px;
+            }
+
+            .event-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 3.5em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3em;
+                letter-spacing: 2px;
+            }
+
+            .hero-date {
+                font-size: 1.4em;
+                letter-spacing: 3px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .timer-display {
+                font-size: 2em;
             }
         }
     </style>
