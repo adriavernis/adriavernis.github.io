@@ -38,15 +38,21 @@
             scroll-behavior: smooth;
         }
 
-        /* FONS HIPNÒTIC SUBTIL */
+        /* FONS DE PANTALLA DE LA PARELLA A TOT EL BODY */
         body {
             margin: 0;
             font-family: var(--font-secondary);
             line-height: 1.7;
             color: var(--color-text-dark);
-            background: var(--color-blanc-fons);
-            /* Aquest fons subtil es veurà a través de les seccions granat transparents */
-            background-image: radial-gradient(circle at top left, var(--color-blanc-fons) 0%, #fefcfb 70%); 
+            
+            /* NOU: La imatge 'fotoparella.jpg' es posa aquí */
+            background-image: url('fotoparella.jpg'); 
+            background-attachment: scroll; /* Això permet que la imatge baixi amb l'scroll */
+            background-size: cover; /* Cobreix tota la finestra */
+            background-position: center; /* Centra la imatge */
+            background-repeat: no-repeat; /* Evita la repetició */
+            background-color: var(--color-blanc-fons); /* Fons de reserva si la imatge no carrega */
+            
             overflow-x: hidden;
             transition: background 1s ease;
         }
@@ -97,6 +103,11 @@
             /* USA la nova transparència */
             background-color: var(--color-granat-transparent); 
             color: var(--color-text-light);
+        }
+        
+        /* NOVA REGLA: Fons semi-transparent per a seccions blanques */
+        .section-blanc {
+             background-color: rgba(255, 255, 255, 0.9); /* Blanc amb un 90% d'opacitat per llegibilitat */
         }
         
         /* Títols dins de seccions granat es veuen blancs/accent */
@@ -210,12 +221,9 @@
             width: 100%;
         }
 
-        /* HERO SECTION */
+        /* HERO SECTION - Sense la imatge de fons, que ara és al 'body' */
         .hero-section {
-            background-image: url('fotoparella.jpg'); 
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center 30%; 
+            /* S'ELIMINEN background-image, background-attachment, etc. */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -232,7 +240,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Mantenim l'overlay subtil */
+            /* Mantenim l'overlay subtil per millorar el contrast amb la imatge de fons */
             background: rgba(0, 0, 0, 0.45); 
             z-index: 1;
             /* Efecte Hypnotic: Animació subtil del gradient */
@@ -511,7 +519,9 @@
         <!-- LOGO AMB IMATGE (fotochia.jpg) -->
         <a href="#inici" class="navbar-logo">
             <!-- Utilitzem un placeholder per si la imatge local no carrega -->
-            <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A" onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';" />
+            <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A"
+            onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';"
+            />
             Alba & Adrià
         </a>
         <ul class="navbar-links">
@@ -543,7 +553,7 @@
         </div>
     </section>
 
-    <!-- HISTÒRIA/BENVINGUDA (BLANC) -->
+    <!-- HISTÒRIA/BENVINGUDA (BLANC) - Ara semi-transparent -->
     <section class="section section-blanc reveal" id="historia">
         <div class="container">
             <h2 class="section-title">Ho volem celebrar amb tu!</h2>
@@ -578,7 +588,7 @@
         </div>
     </section>
 
-    <!-- TRANSPORT (BLANC) -->
+    <!-- TRANSPORT (BLANC) - Ara semi-transparent -->
     <section class="section section-blanc reveal" id="transport">
         <div class="container">
             <h2 class="section-title">Transport</h2>
