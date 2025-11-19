@@ -19,7 +19,8 @@
         :root {
             /* COLORS REFINADES */
             --color-granat: #600018; /* Bordeus Fosc */
-            --color-granat-transparent: rgba(96, 0, 24, 0.92); /* Granat amb transparència */
+            /* TRANSPARÈNCIA AJUSTADA: De 0.92 a 0.75 per mostrar el fons */
+            --color-granat-transparent: rgba(96, 0, 24, 0.75); 
             --color-granat-light: #7a1c2a; 
             --color-blanc-fons: #f7f3ed; /* Blanc cremat suau, gairebé 'cream' */
             --color-accent: #b08d57; /* Soft Gold/Brass per a detalls i accents */
@@ -44,7 +45,8 @@
             line-height: 1.7;
             color: var(--color-text-dark);
             background: var(--color-blanc-fons);
-            background-image: radial-gradient(circle at top left, var(--color-blanc-fons) 0%, #fefcfb 70%);
+            /* Aquest fons subtil es veurà a través de les seccions granat transparents */
+            background-image: radial-gradient(circle at top left, var(--color-blanc-fons) 0%, #fefcfb 70%); 
             overflow-x: hidden;
             transition: background 1s ease;
         }
@@ -92,7 +94,8 @@
         }
 
         .section-granat {
-            background-color: var(--color-granat-transparent); /* Semi-transparent */
+            /* USA la nova transparència */
+            background-color: var(--color-granat-transparent); 
             color: var(--color-text-light);
         }
         
@@ -137,6 +140,7 @@
             transition: all 0.5s ease;
         }
 
+        /* LOGO AMB IMATGE - MODIFICAT */
         .navbar-logo {
             font-family: var(--font-script);
             font-size: 2.2em;
@@ -144,14 +148,31 @@
             font-style: italic;
             font-weight: 400;
             transition: color 0.3s ease;
+            /* Flexbox per alinear la imatge */
+            display: flex; 
+            align-items: center;
+            gap: 10px; /* Espai entre la imatge i el text */
         }
         .navbar-logo:hover {
             color: var(--color-accent);
         }
 
+        /* ESTIL DE LA IMATGE DEL LOGO - NOU */
+        .logo-icon {
+            width: 30px; 
+            height: 30px;
+            border-radius: 50%; /* Circular */
+            object-fit: cover;
+            border: 2px solid var(--color-accent); /* Marc elegant */
+            transition: border-color 0.3s ease;
+        }
+        .navbar-logo:hover .logo-icon {
+            border-color: var(--color-granat); /* Canvi de color del marc en hover */
+        }
+        
         .navbar-links {
             display: flex;
-            gap: 40px;
+            gap: 40px; /* Separació mínima entre blocs */
             list-style: none;
             margin: 0;
             padding: 0;
@@ -211,7 +232,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.45); /* Overlay més lleuger */
+            /* Mantenim l'overlay subtil */
+            background: rgba(0, 0, 0, 0.45); 
             z-index: 1;
             /* Efecte Hypnotic: Animació subtil del gradient */
             background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
@@ -483,10 +505,15 @@
     </style>
 </head>
 <body>
-
+    
     <!-- MENÚ DE NAVEGACIÓ COMPLET -->
     <nav class="navbar">
-        <a href="#inici" class="navbar-logo">Alba & Adrià</a>
+        <!-- LOGO AMB IMATGE (fotochia.jpg) -->
+        <a href="#inici" class="navbar-logo">
+            <!-- Utilitzem un placeholder per si la imatge local no carrega -->
+            <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A" onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';" />
+            Alba & Adrià
+        </a>
         <ul class="navbar-links">
             <li><a href="#inici">Inici</a></li>
             <li><a href="#compte">Compte Enrere</a></li>
@@ -507,7 +534,7 @@
         </div>
     </header>
 
-    <!-- COMPTE ENRERE (GRANAT) -->
+    <!-- COMPTE ENRERE (GRANAT - ARA MÉS TRANSPARENT) -->
     <section class="section section-granat reveal" id="compte">
         <div class="container">
             <h2 class="section-title">Compte enrere</h2>
@@ -524,7 +551,7 @@
         </div>
     </section>
 
-    <!-- PROGRAMA I LLOC (GRANAT) -->
+    <!-- PROGRAMA I LLOC (GRANAT - ARA MÉS TRANSPARENT) -->
     <section class="section section-granat reveal" id="programa">
         <div class="container">
             <h2 class="section-title">El Programa del Dia</h2>
@@ -534,7 +561,7 @@
                 <!-- CERIMÒNIA -->
                 <div class="event-item">
                     <i class="fas fa-ring"></i>
-                    <h3>Cerimònia</h3>
+                    <h3>Cerimònia </h3>
                     <p><strong>Hora:</strong> 17:30h</p>
                     <p>Començarem amb la part més emotiva, on ens donarem el "Sí, vull!".</p>
                 </div>
@@ -562,7 +589,7 @@
         </div>
     </section>
 
-    <!-- RSVP (GRANAT) -->
+    <!-- RSVP (GRANAT - ARA MÉS TRANSPARENT) -->
     <section class="section section-granat reveal" id="rsvp">
         <div class="container">
             <h2 class="section-title">Confirma la teva assistència</h2>
