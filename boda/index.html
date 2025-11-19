@@ -4,13 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alba & Adrià • Ens casem!</title>
-    <!-- Fonts de Google Fonts per a un toc elegant -->
-    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /*
-        * Estils CSS: el cor del disseny
-        * Hem utilitzat variables per a que sigui fàcil canviar els colors si ho desitgeu.
-        */
         :root {
             --color-granat: #800020;
             --color-blanc: #fdfaf7;
@@ -18,10 +13,9 @@
             --color-text-blanc: #444;
             --font-primary: 'Playfair Display', serif;
             --font-secondary: 'Lora', serif;
-            --font-script: 'Sacramento', cursive; /* Nova font elegant */
+            --font-script: 'Great Vibes', cursive;
         }
 
-        /* Estils generals del cos */
         html {
             scroll-behavior: smooth;
         }
@@ -41,7 +35,6 @@
             text-align: center;
         }
 
-        /* Títols de secció */
         .section-title {
             font-family: var(--font-primary);
             font-size: 2.8em;
@@ -51,7 +44,6 @@
             position: relative;
         }
 
-        /* L'estil de la línia sota el títol */
         .section-title::after {
             content: '';
             display: block;
@@ -61,7 +53,6 @@
             margin: 15px auto 0;
         }
 
-        /* Alternança de colors a les seccions */
         .section-granat {
             background-color: var(--color-granat);
             color: var(--color-text-granat);
@@ -80,7 +71,6 @@
             color: var(--color-text-blanc);
         }
 
-        /* Barra de navegació */
         .navbar {
             position: fixed;
             top: 0;
@@ -89,7 +79,7 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(5px);
             display: flex;
-            justify-content: flex-start; /* Aliniat a l'esquerra */
+            justify-content: flex-start;
             align-items: center;
             padding: 15px 50px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -97,28 +87,38 @@
         }
 
         .navbar-logo {
-            font-family: var(--font-script); /* Font canviada */
+            font-family: var(--font-script);
             font-size: 1.8em;
             color: var(--color-granat);
             font-style: italic;
             font-weight: 700;
         }
 
-        /* Secció de portada (Hero) */
         .hero-section {
-            /* Fons de color sòlid en lloc de la imatge */
-            background-color: #F0F0F0; /* Color gris clar */
+            background-image: url('fotoparella.jpg');
+            background-size: cover;
+            background-position: center;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: var(--color-granat); /* Canvi de color de text per a que es vegi millor amb el fons clar */
+            color: var(--color-blanc);
             position: relative;
             overflow: hidden;
         }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
         
-        /* Ja no es necessita una capa fosca, ja que el fons és sòlid i fosc */
         .hero-content {
             position: relative;
             z-index: 2;
@@ -126,11 +126,12 @@
         }
 
         .hero-title {
-            font-family: var(--font-script); /* Font canviada */
+            font-family: var(--font-script);
             font-size: 5.5em;
             margin-bottom: 0;
             line-height: 1.1;
             font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .hero-subtitle {
@@ -138,12 +139,13 @@
             font-size: 1.8em;
             font-style: italic;
             margin-top: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
         .hero-divider {
             width: 120px;
             height: 3px;
-            background: var(--color-granat); /* Canvi de color per a que es vegi millor */
+            background: var(--color-blanc);
             margin: 20px auto;
         }
 
@@ -154,7 +156,6 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* Temporitzador de compte enrere (ara en horitzontal) */
         .timer-display {
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
@@ -174,12 +175,11 @@
         }
         
         .timer-display .time-item small {
-            font-size: 0.5em; /* Lletra més petita per a "dies", "h", etc. */
+            font-size: 0.5em;
             font-weight: 300;
             margin-top: 5px;
         }
         
-        /* Estil per al link d'ubicació */
         .location-link {
             display: inline-block;
             margin-top: 10px;
@@ -192,7 +192,6 @@
             color: #d1d1d1;
         }
 
-        /* Botons d'acció */
         .btn {
             display: inline-block;
             padding: 15px 40px;
@@ -215,16 +214,7 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.2);
         }
-        
-        /* Estil per al número de compte (ajustat per ser menys prominent) */
-        .bank-account {
-            font-family: var(--font-primary);
-            font-size: 1.2em; /* Mida de lletra reduïda */
-            font-weight: 400; /* Bolder reduïda */
-            color: var(--color-text-blanc);
-        }
 
-        /* Peu de pàgina */
         .footer {
             background-color: var(--color-granat);
             color: var(--color-text-granat);
@@ -233,12 +223,11 @@
             font-size: 0.9em;
         }
 
-        /* Media Queries per a dispositius mòbils */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
                 padding: 15px 20px;
-                justify-content: center; /* Per a mòbils, tornem a centrar-ho per un millor disseny */
+                justify-content: center;
             }
 
             .navbar-logo {
@@ -265,12 +254,10 @@
 </head>
 <body>
 
-    <!-- Barra de Navegació -->
     <nav class="navbar">
         <div class="navbar-logo">Alba & Adrià</div>
     </nav>
 
-    <!-- Secció de Portada (Hero) amb la foto de la parella -->
     <header class="hero-section" id="inici">
         <div class="hero-content">
             <h1 class="hero-title">Alba & Adrià</h1>
@@ -280,7 +267,6 @@
         </div>
     </header>
 
-    <!-- Alterna a una secció de color granat -->
     <section class="section section-granat" id="compte">
         <div class="container">
             <h2 class="section-title">Compte enrere pel gran dia</h2>
@@ -288,7 +274,6 @@
         </div>
     </section>
 
-    <!-- Alterna a una secció de color blanc -->
     <section class="section section-blanc" id="historia">
         <div class="container">
             <h2 class="section-title">La nostra història</h2>
@@ -296,7 +281,6 @@
         </div>
     </section>
 
-    <!-- Alterna a una secció de color granat -->
     <section class="section section-granat" id="celebracio">
         <div class="container">
             <h2 class="section-title">Celebració</h2>
@@ -308,7 +292,6 @@
         </div>
     </section>
 
-    <!-- Alterna a una secció de color blanc -->
     <section class="section section-blanc" id="transport">
         <div class="container">
             <h2 class="section-title">Transport</h2>
@@ -317,7 +300,6 @@
         </div>
     </section>
 
-    <!-- Alterna a una secció de color granat -->
     <section class="section section-granat" id="rsvp">
         <div class="container">
             <h2 class="section-title">Confirma la teva assistència</h2>
@@ -326,19 +308,10 @@
         </div>
     </section>
 
-    <!-- Nova secció per al compte bancari, alternant a color blanc -->
-    <section class="section section-blanc" id="regal">
-        <div class="container">
-            <p class="bank-account">ES82 XXXXXXXXXXXX</p>
-        </div>
-    </section>
-
-    <!-- Peu de Pàgina -->
     <footer class="footer">
         <p>&copy; 2026 • Alba & Adrià.</p>
     </footer>
 
-    <!-- Script de JavaScript (sense canvis) -->
     <script>
         const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
         const timer = document.getElementById("timer");
@@ -350,7 +323,6 @@
             const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const secs = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // Codi per mostrar el temporitzador en format horitzontal
             timer.innerHTML = `
                 <div class="time-item">${days}<small>dies</small></div>
                 <div class="time-item">${hours}<small>h</small></div>
