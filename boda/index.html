@@ -16,8 +16,7 @@
         :root {
             /* COLORS REFINADES */
             --color-granat: #600018; /* Bordeus Fosc */
-            /* TRANSPARÈNCIA: Per a seccions fosques (granat), es veurà la foto per sota */
-            --color-granat-transparent: rgba(96, 0, 24, 0.75); 
+            --color-granat-transparent: rgba(96, 0, 24, 0.75); /* TRANSPARÈNCIA: Per a seccions fosques (granat) */
             --color-granat-light: #7a1c2a; 
             /* NOU: Color blanc cremat (ara transparent) per veure la foto de fons */
             --color-blanc-fons-transparent: rgba(247, 243, 237, 0.9); 
@@ -45,12 +44,10 @@
             overflow-x: hidden;
             transition: background 1s ease;
 
-            /* PROPIETATS PER AL FONS DE FOTO EN TOTA LA PÀGINA */
-            background-image: url('fotoparella.jpg'); 
-            background-size: cover; /* Assegura que cobreixi tota la pantalla, clau per a mòbil */
-            background-position: center center; /* Centra la imatge (Per a escriptori) */
-            background-attachment: fixed; /* Efecte Parallax per a que la foto no es mogui */
-            background-color: #f7f3ed; /* Color de fallback si la imatge no carrega */
+            /* PROPIETATS PER AL FONS DE FOTO EN TOTA LA PÀGINA: AIXÒ JA NO ÉS LA FOTO DE PARELLA, ÉS UN FONS TEXTURITZAT O DE SEGURETAT */
+            /* DEIXEM EL FONS COMPLETAMENT BLANC, JA QUE LA FOTO DE PARELLA VA A DINS DEL HERO-SECTION */
+            background-color: #f7f3ed; 
+            /* ELIMINEM background-image, background-size, background-position, background-attachment */
         }
         /* ----------------------------------------------- */
 
@@ -222,18 +219,35 @@
             width: 100%;
         }
 
-        /* HERO SECTION - ARA SENSE BACKGROUND-IMAGE */
+        /* HERO SECTION - MODIFICAT PER USAR <img> */
         .hero-section {
-            /* BACKGROUND-IMAGE ELIMINAT - ARA ÉS AL BODY */
             height: 100vh;
+            height: 100dvh; /* Alçada dinàmica i per a mòbils */
+            background: none; /* ELIMINEM l'antic background-image */
+            
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: var(--color-blanc-fons);
+            color: var(--color-text-light); /* Assegurem que el text és clar */
             position: relative;
+            overflow: hidden;
         }
 
+        /* NOU: Estils per a la imatge inserida a l'HTML */
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            object-fit: cover; /* CLAU: Cobreix l'espai sense distorsionar */
+            object-position: center center; /* Centra la part important de la foto */
+            
+            z-index: 0; /* Posicionament darrere del contingut i del filtre fosc */
+        }
+        
         .hero-section::before {
             content: '';
             position: absolute;
@@ -242,7 +256,6 @@
             width: 100%;
             height: 100%;
             /* Overlay per a millor contrast del text */
-            background: rgba(0, 0, 0, 0.45); 
             z-index: 1;
             /* Efecte Hypnotic: Animació subtil del gradient */
             background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
@@ -471,20 +484,10 @@
         /* MEDIA QUERIES (ADAPTABILITAT) */
         @media (max-width: 900px) {
             
-            /* ================================================= */
-            /* MODIFICACIÓ CLAU PER A LA FOTOPARELLA EN MÒBIL    */
-            /* Per assegurar que la part superior de la imatge  */
-            /* (on solen ser els rostres) es vegi, canviem la   */
-            /* posició del fons a 'top center'.                  */
-            /* ================================================= */
-            body {
-                /* background-size: cover; es manté del CSS global */
-                background-position: top center; /* CENTRA LA PART SUPERIOR (caps) */
-            }
-            /* ================================================= */
+            /* SENSE IMATGE DE FONS AL BODY, AQUESTA MEDIA QUERY JA NO ÉS NECESSÀRIA. LA GESTIÓ LA FA hero-image */
             
             .navbar-links {
-                display: none;    
+                display: none;  
             }
             
             .navbar {
@@ -536,13 +539,16 @@
         </a>
         <ul class="navbar-links">
             <li><a href="#inici">Inici</a></li>
-                        <li><a href="#programa">Programa</a></li>
+            <li><a href="#programa">Programa</a></li>
             <li><a href="#transport">Transport</a></li>
             <li><a href="#rsvp">Assistència</a></li>
         </ul>
     </nav>
 
     <header class="hero-section" id="inici">
+        
+        <img src="foto-parella.jpg" alt="Foto de la parella Alba i Adrià" class="hero-image">
+        
         <div class="hero-content">
             <h1 class="hero-title">Alba & Adrià</h1>
             <p class="hero-subtitle">Ens casem!</p>
@@ -689,4 +695,3 @@
     </script>
 </body>
 </html>
-
