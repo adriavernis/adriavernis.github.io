@@ -113,14 +113,15 @@ body {
     color: var(--granat-color);
 }
 
-/* Secció Hero (Portada) */
+/* Secció Hero (Portada) - MODIFICAT */
 .hero-section {
-    /* MANTÉ '100vh' per a compatibilitat */
+    /* Alçada dinàmica i per a mòbils */
     height: 100vh;
-    /* NOU: Utilitza '100dvh' per una alçada més estable en mòbils */
     height: 100dvh; 
     
-    background: url('foto-parella.jpg') no-repeat center center/cover;
+    /* ELIMINEM la imatge de fons per usar l'etiqueta <img> */
+    background: none; 
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -130,6 +131,24 @@ body {
     overflow: hidden;
 }
 
+/* NOU: Estils per a la imatge inserida a l'HTML */
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* CLAU: Assegura que la imatge cobreix l'espai sense distorsionar, i permet centrar el focus */
+    object-fit: cover;
+    
+    /* Centra la part important de la foto */
+    object-position: center center; 
+    
+    z-index: 0; /* Posicionament darrere del contingut i del filtre fosc */
+}
+
+/* El filtre fosc (::before) s'aplica sobre la imatge (z-index: 1) */
 .hero-section::before {
     content: '';
     position: absolute;
