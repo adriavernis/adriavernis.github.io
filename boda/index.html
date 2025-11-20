@@ -36,7 +36,7 @@
             scroll-behavior: smooth;
         }
 
-        /* --- FONS DE PÀGINA COMPLERT AMB FOTO (Escritori) --- */
+        /* --- NOU: FONS DE PÀGINA COMPLERT AMB FOTO --- */
         body {
             margin: 0;
             font-family: var(--font-secondary);
@@ -224,10 +224,8 @@
 
         /* HERO SECTION - ARA SENSE BACKGROUND-IMAGE */
         .hero-section {
-            /* Per defecte (Escritori): 100% de l'altura del viewport */
+            /* BACKGROUND-IMAGE ELIMINAT - ARA ÉS AL BODY */
             height: 100vh;
-            height: 100dvh; /* Versió moderna */
-            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -474,17 +472,14 @@
         @media (max-width: 900px) {
             
             /* ================================================= */
-            /* 1. AJUST DE LA IMATGE DE FONS DEL BODY PER MÒBIL */
-            /* Assegura que la part superior de la imatge (caps) es vegi. */
+            /* MODIFICACIÓ CLAU PER A LA FOTOPARELLA EN MÒBIL    */
+            /* Per assegurar que la part superior de la imatge  */
+            /* (on solen ser els rostres) es vegi, canviem la   */
+            /* posició del fons a 'top center'.                  */
+            /* ================================================= */
             body {
-                background-position: top center; 
-            }
-            
-            /* 2. 🔑 SOLUCIÓ CLAU: Redueix l'ALÇADA del Hero a mòbil! */
-            .hero-section {
-                /* Reduïm molt l'alçada perquè el body no hagi d'estirar la imatge verticalment */
-                height: 60vh; 
-                height: 60dvh; 
+                /* background-size: cover; es manté del CSS global */
+                background-position: top center; /* CENTRA LA PART SUPERIOR (caps) */
             }
             /* ================================================= */
             
@@ -541,7 +536,7 @@
         </a>
         <ul class="navbar-links">
             <li><a href="#inici">Inici</a></li>
-            <li><a href="#programa">Programa</a></li>
+                        <li><a href="#programa">Programa</a></li>
             <li><a href="#transport">Transport</a></li>
             <li><a href="#rsvp">Assistència</a></li>
         </ul>
@@ -694,3 +689,4 @@
     </script>
 </body>
 </html>
+
