@@ -116,8 +116,8 @@ body {
 /* Secció Hero (Portada) - MODIFICAT */
 .hero-section {
     /* Alçada dinàmica i per a mòbils */
-    height: 100vh;
-    height: 100dvh; 
+    height: 65vh;
+    height: 65dvh; 
     
     /* ELIMINEM la imatge de fons per usar l'etiqueta <img> */
     background: none; 
