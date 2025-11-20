@@ -138,10 +138,11 @@ body {
     width: 100%;
     height: 100%;
     
+    /* Per defecte (Escritori): cobreix l'espai i retalla si cal */
     object-fit: cover;
     
     /* Centra la part important de la foto */
-    object-position: center center; 
+    object-position: 50% 5%; /* Ajustat al 5% des de dalt, com havíem acordat */
     
     z-index: 0; 
 }
@@ -253,10 +254,26 @@ body {
 
 /* Media Queries (per a mòbils) */
 @media (max-width: 768px) {
-    /* 🔑 CANVI CLAU: Redueix l'alçada del Hero a mòbils al 45% (molt petit) */
+    
+    /* 1. Redueix l'alçada del contenidor a mòbils (molt petit) */
     .hero-section {
         height: 45vh; 
         height: 45dvh; 
+    }
+    
+    /* 2. 🚨 SOLUCIÓ: Canvia l'ajustament de la imatge per evitar l'ampliació excessiva (zoom) */
+    .hero-image {
+        /* Utilitzem 'contain' per assegurar que tota la imatge es veu, sense retalls per zoom. */
+        object-fit: contain; 
+        
+        /* Ajustem l'amplada i l'alçada de la imatge dins del contenidor per si volem un petit marge */
+        width: 100%; 
+        height: 100%;
+        
+        /* Centrem el focus de nou a 50% 5% per mantenir la part de dalt, però ara sobre una imatge sencera */
+        object-position: 50% 5%;
+        
+        /* IMPORTANT: Si object-fit és 'contain', veuràs franges negres. El color de fons del filtre fosc (.hero-section::before) farà que aquestes franges siguin fosques. */
     }
     
     .navbar {
