@@ -113,13 +113,12 @@ body {
     color: var(--granat-color);
 }
 
-/* Secció Hero (Portada) - MODIFICAT */
+/* Secció Hero (Portada) - Mida per defecte (Escritori) */
 .hero-section {
-    /* Alçada dinàmica i per a mòbils */
+    /* Alçada per defecte: 65% de l'altura de l'escriptori */
     height: 65vh;
     height: 65dvh; 
     
-    /* ELIMINEM la imatge de fons per usar l'etiqueta <img> */
     background: none; 
     
     display: flex;
@@ -139,13 +138,12 @@ body {
     width: 100%;
     height: 100%;
     
-    /* CLAU: Assegura que la imatge cobreix l'espai sense distorsionar, i permet centrar el focus */
     object-fit: cover;
     
     /* Centra la part important de la foto */
     object-position: 50% 5%;
     
-    z-index: 0; /* Posicionament darrere del contingut i del filtre fosc */
+    z-index: 0; 
 }
 
 /* El filtre fosc (::before) s'aplica sobre la imatge (z-index: 1) */
@@ -255,6 +253,12 @@ body {
 
 /* Media Queries (per a mòbils) */
 @media (max-width: 768px) {
+    /* 🔑 CANVI CLAU: Redueix l'alçada del Hero a mòbils al 45% (molt petit) */
+    .hero-section {
+        height: 45vh; 
+        height: 45dvh; 
+    }
+    
     .navbar {
         flex-direction: column;
         padding: 15px 20px;
