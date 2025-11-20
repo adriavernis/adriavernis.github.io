@@ -143,7 +143,7 @@ body {
     object-fit: cover;
     
     /* Centra la part important de la foto */
-    object-position: center center; 
+    object-position: 50% 5%;
     
     z-index: 0; /* Posicionament darrere del contingut i del filtre fosc */
 }
