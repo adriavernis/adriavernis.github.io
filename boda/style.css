@@ -141,7 +141,7 @@ body {
     object-fit: cover;
     
     /* Centra la part important de la foto */
-    object-position: 50% 5%;
+    object-position: center center; 
     
     z-index: 0; 
 }
