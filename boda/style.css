@@ -115,8 +115,12 @@ body {
 
 /* Secció Hero (Portada) */
 .hero-section {
-    background: url('foto-parella.jpg') no-repeat center center/cover;
+    /* MANTÉ '100vh' per a compatibilitat */
     height: 100vh;
+    /* NOU: Utilitza '100dvh' per una alçada més estable en mòbils */
+    height: 100dvh; 
+    
+    background: url('foto-parella.jpg') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -249,4 +253,3 @@ body {
         font-size: 2em;
     }
 }
-
