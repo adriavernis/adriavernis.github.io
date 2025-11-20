@@ -142,7 +142,7 @@ body {
     object-fit: cover;
     
     /* Centra la part important de la foto */
-    object-position: 50% 5%; /* Ajustat al 5% des de dalt, com havíem acordat */
+    object-position: 50% 5%; /* Ajustat al 5% des de dalt */
     
     z-index: 0; 
 }
@@ -255,25 +255,35 @@ body {
 /* Media Queries (per a mòbils) */
 @media (max-width: 768px) {
     
-    /* 1. Redueix l'alçada del contenidor a mòbils (molt petit) */
+    /* 1. Reduïm l'alçada del CONTENIDOR (la secció visible) */
     .hero-section {
         height: 45vh; 
         height: 45dvh; 
+        /* Eliminem qualsevol padding que pugui afectar l'alçada */
+        padding-top: 0;
+        padding-bottom: 0;
     }
     
-    /* 2. 🚨 SOLUCIÓ: Canvia l'ajustament de la imatge per evitar l'ampliació excessiva (zoom) */
+    /* 2. 🔑 CANVI CLAU: Reduïm la mida de la IMATGE per eliminar el zoom */
     .hero-image {
-        /* Utilitzem 'contain' per assegurar que tota la imatge es veu, sense retalls per zoom. */
+        /* Desactivem la posició absoluta per tractar-la com a element de bloc */
+        position: relative; 
+        
+        /* Object-fit a 'contain' per veure la imatge sencera (amb barres laterals) */
         object-fit: contain; 
         
-        /* Ajustem l'amplada i l'alçada de la imatge dins del contenidor per si volem un petit marge */
-        width: 100%; 
+        /* Reduïm l'amplada i l'alçada per crear un marge visible */
+        width: 80%; /* Fa que la imatge ocupi només el 80% de l'ample */
         height: 100%;
         
-        /* Centrem el focus de nou a 50% 5% per mantenir la part de dalt, però ara sobre una imatge sencera */
-        object-position: 50% 5%;
+        /* Centrem la imatge horitzontalment */
+        top: 0; /* Desactivem el top anterior */
+        left: 0; /* Desactivem el left anterior */
+        right: 0;
+        margin: 0 auto;
         
-        /* IMPORTANT: Si object-fit és 'contain', veuràs franges negres. El color de fons del filtre fosc (.hero-section::before) farà que aquestes franges siguin fosques. */
+        /* Mantenim el focus de la imatge dalt (object-position) */
+        object-position: 50% 5%;
     }
     
     .navbar {
