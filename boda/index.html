@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="ca">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alba & Adrià • Ens casem!</title>
-    
+
     <link rel="icon" type="image/jpeg" href="fotochia.jpg">
 
-    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Parisienne&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:wght@400;700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
         :root {
             /* COLORS REFINADES */
-            --color-granat: #600018; /* Bordeus Fosc */
-            /* TRANSPARÈNCIA: Per a seccions fosques (granat), es veurà la foto per sota */
-            --color-granat-transparent: rgba(96, 0, 24, 0.75); 
-            --color-granat-light: #7a1c2a; 
+            --color-verd: #1a472a;
+            /* Verd Fosc */
+            /* TRANSPARÈNCIA: Per a seccions fosques (verd), es veurà la foto per sota */
+            --color-verd-transparent: rgba(26, 71, 42, 0.85);
+            --color-verd-light: #2e5c3e;
             /* NOU: Color blanc cremat (ara transparent) per veure la foto de fons */
-            --color-blanc-fons-transparent: rgba(247, 243, 237, 0.9); 
-            --color-accent: #b08d57; /* Soft Gold/Brass per a detalls i accents */
-            --color-text-dark: #333333; /* Gris fosc per al cos de text */
+            --color-blanc-fons-transparent: rgba(247, 243, 237, 0.9);
+            --color-accent: #b08d57;
+            /* Soft Gold/Brass per a detalls i accents */
+            --color-text-dark: #333333;
+            /* Gris fosc per al cos de text */
             --color-text-light: #fdfaf7;
+            --color-blanc-fons: #fdfaf7;
+            /* Afegit per assegurar compatibilitat */
 
             /* FONTS */
             --font-primary: 'Playfair Display', serif;
             --font-secondary: 'Lora', serif;
             --font-script: 'Parisienne', cursive;
-            --font-sans: 'Inter', sans-serif; /* Nova font Inter */
+            --font-sans: 'Inter', sans-serif;
+            /* Nova font Inter */
         }
 
         html {
@@ -44,14 +53,21 @@
             color: var(--color-text-dark);
             overflow-x: hidden;
             transition: background 1s ease;
-
-            /* PROPIETATS PER AL FONS DE FOTO EN TOTA LA PÀGINA */
-            background-image: url('fotoparella.jpg'); 
-            background-size: cover; /* Assegura que cobreixi tota la pantalla, clau per a mòbil */
-            background-position: center center; /* Centra la imatge (Per a escriptori) */
-            background-attachment: fixed; /* Efecte Parallax per a que la foto no es mogui */
-            background-color: #f7f3ed; /* Color de fallback si la imatge no carrega */
         }
+
+        #background-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('fotoparella.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-color: #f7f3ed;
+        }
+
         /* ----------------------------------------------- */
 
         /* Animació de Revelació (Fade-In Up) */
@@ -60,6 +76,7 @@
             transform: translateY(30px);
             transition: opacity 1s cubic-bezier(0.17, 0.55, 0.55, 1), transform 1s cubic-bezier(0.17, 0.55, 0.55, 1);
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -73,9 +90,10 @@
 
         /* CONTENIDOR */
         .container {
-            max-width: 1100px; 
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 100px 30px; /* Més espai vertical */
+            padding: 100px 30px;
+            /* Més espai vertical */
             text-align: center;
         }
 
@@ -89,34 +107,39 @@
         /* SECCIONS */
         .section-title {
             font-family: var(--font-primary);
-            font-size: 3.5em; /* Més gran i impactant */
+            font-size: 3.5em;
+            /* Més gran i impactant */
             font-weight: 700;
             margin-bottom: 25px;
             letter-spacing: 2px;
-            color: var(--color-granat);
+            color: var(--color-verd);
         }
 
         /* SECCIÓ BLANCA - Feta transparent per a l'efecte de fons de foto */
         .section-blanc {
-            background-color: var(--color-blanc-fons-transparent); /* Semi-transparent */
+            background-color: var(--color-blanc-fons-transparent);
+            /* Semi-transparent */
             color: var(--color-text-dark);
-            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            /* Ombra per separar-lo visualment de la foto */
         }
-        
-        .section-granat {
+
+        .section-verd {
             /* Ja utilitza la transparència per defecte (0.75) */
-            background-color: var(--color-granat-transparent); 
+            background-color: var(--color-verd-transparent);
             color: var(--color-text-light);
-            box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Ombra per separar-lo visualment de la foto */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+            /* Ombra per separar-lo visualment de la foto */
         }
-        
-        /* Títols dins de seccions granat es veuen blancs/accent */
-        .section-granat .section-title {
+
+        /* Títols dins de seccions verd es veuen blancs/accent */
+        .section-verd .section-title {
             color: var(--color-text-light);
         }
-        
-        .section-granat .section-title::after {
-            background: var(--color-accent) !important; /* Subratllat en color accent */
+
+        .section-verd .section-title::after {
+            background: var(--color-accent) !important;
+            /* Subratllat en color accent */
         }
 
         /* Subratllat dels títols (més subtil) */
@@ -125,15 +148,18 @@
             display: block;
             width: 100px;
             height: 2px;
-            background: var(--color-accent); /* Color accent */
+            background: var(--color-accent);
+            /* Color accent */
             margin: 15px auto 0;
             opacity: 0.8;
-            transition: width 0.5s ease-out; /* Animació subtil */
+            transition: width 0.5s ease-out;
+            /* Animació subtil */
         }
+
         .section-title:hover::after {
             width: 150px;
         }
-        
+
         /* NAVBAR FIXA */
         .navbar {
             position: fixed;
@@ -141,13 +167,14 @@
             left: 0;
             width: 100%;
             /* Semi-transparent per veure lleugerament la foto */
-            background-color: rgba(247, 243, 237, 0.95); 
-            backdrop-filter: blur(10px); 
+            background-color: rgba(247, 243, 237, 0.95);
+            backdrop-filter: blur(10px);
             display: flex;
-            justify-content: space-around; 
+            justify-content: space-around;
             align-items: center;
             padding: 15px 50px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Ombra més lleugera */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            /* Ombra més lleugera */
             z-index: 1000;
             transition: all 0.5s ease;
         }
@@ -156,35 +183,42 @@
         .navbar-logo {
             font-family: var(--font-script);
             font-size: 2.2em;
-            color: var(--color-granat);
+            color: var(--color-verd);
             font-style: italic;
             font-weight: 400;
             transition: color 0.3s ease;
             /* Flexbox per alinear la imatge */
-            display: flex; 
+            display: flex;
             align-items: center;
-            gap: 10px; /* Espai entre la imatge i el text */
+            gap: 10px;
+            /* Espai entre la imatge i el text */
         }
+
         .navbar-logo:hover {
             color: var(--color-accent);
         }
 
         /* ESTIL DE LA IMATGE DEL LOGO - NOU */
         .logo-icon {
-            width: 30px; 
+            width: 30px;
             height: 30px;
-            border-radius: 50%; /* Circular */
+            border-radius: 50%;
+            /* Circular */
             object-fit: cover;
-            border: 2px solid var(--color-accent); /* Marc elegant */
+            border: 2px solid var(--color-accent);
+            /* Marc elegant */
             transition: border-color 0.3s ease;
         }
+
         .navbar-logo:hover .logo-icon {
-            border-color: var(--color-granat); /* Canvi de color del marc en hover */
+            border-color: var(--color-verd);
+            /* Canvi de color del marc en hover */
         }
-        
+
         .navbar-links {
             display: flex;
-            gap: 40px; /* Separació mínima entre blocs */
+            gap: 40px;
+            /* Separació mínima entre blocs */
             list-style: none;
             margin: 0;
             padding: 0;
@@ -192,7 +226,8 @@
 
         .navbar-links a {
             font-family: var(--font-sans);
-            font-weight: 400; /* Més lleuger */
+            font-weight: 400;
+            /* Més lleuger */
             font-size: 1em;
             text-transform: uppercase;
             color: var(--color-text-dark);
@@ -201,13 +236,15 @@
             letter-spacing: 1px;
             transition: color 0.3s ease;
         }
-        
-        .navbar-links a::after { 
+
+        .navbar-links a::after {
             content: '';
             display: block;
             width: 0;
-            height: 1px; /* Més fi */
-            background: var(--color-accent); /* Accent daurat */
+            height: 1px;
+            /* Més fi */
+            background: var(--color-accent);
+            /* Accent daurat */
             transition: width 0.3s ease-out;
             position: absolute;
             bottom: -5px;
@@ -217,7 +254,7 @@
         .navbar-links a:hover {
             color: var(--color-accent);
         }
-        
+
         .navbar-links a:hover::after {
             width: 100%;
         }
@@ -242,54 +279,69 @@
             width: 100%;
             height: 100%;
             /* Overlay per a millor contrast del text */
-            background: rgba(0, 0, 0, 0.45); 
+            background: rgba(0, 0, 0, 0.45);
             z-index: 1;
             /* Efecte Hypnotic: Animació subtil del gradient */
-            background: linear-gradient(45deg, rgba(0,0,0,0.6) 0%, rgba(96, 0, 24, 0.2) 100%);
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0.6) 0%, rgba(26, 71, 42, 0.2) 100%);
             animation: gradientShift 15s ease infinite alternate;
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
             padding: 20px;
-            animation: fadeIn 3s ease-out; /* Animació més lenta per elegància */
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            animation: fadeIn 3s ease-out;
+            /* Animació més lenta per elegància */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .hero-title {
             font-family: var(--font-script);
-            font-size: 8em; /* Molt gran */
+            font-size: 8em;
+            /* Molt gran */
             margin-bottom: 5px;
             line-height: 1.1;
             letter-spacing: 3px;
             font-weight: 400;
         }
-        
+
         .hero-subtitle {
             font-family: var(--font-primary);
             font-size: 2.5em;
             font-style: normal;
             margin-top: 5px;
             margin-bottom: 25px;
-            letter-spacing: 8px; /* Més separació de lletres */
+            letter-spacing: 8px;
+            /* Més separació de lletres */
             text-transform: uppercase;
-            color: var(--color-accent); /* Color accent per al subtítol */
+            color: var(--color-accent);
+            /* Color accent per al subtítol */
         }
 
         .hero-divider {
             width: 200px;
-            height: 1px; /* Molt fi */
+            height: 1px;
+            /* Molt fi */
             background: var(--color-accent);
             margin: 25px auto;
             opacity: 0.8;
@@ -306,44 +358,52 @@
         .timer-display {
             font-family: var(--font-sans);
             font-weight: 700;
-            font-size: 1em; 
+            font-size: 1em;
             letter-spacing: 1px;
             color: var(--color-text-light);
-            gap: 10px; /* Separació mínima entre blocs */
+            gap: 10px;
+            /* Separació mínima entre blocs */
             padding-top: 30px;
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             text-align: center;
         }
-        
+
         .timer-display .time-item {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100px; /* Mida fixa per al contenidor */
+            width: 100px;
+            /* Mida fixa per al contenidor */
             padding: 20px 0;
-            margin: 0 15px; /* Separació visual gran entre blocs */
-            border: 1px solid var(--color-accent); /* Vora subtil accent */
+            margin: 0 15px;
+            /* Separació visual gran entre blocs */
+            border: 1px solid var(--color-accent);
+            /* Vora subtil accent */
             border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05); /* Fons gairebé transparent */
+            background-color: rgba(255, 255, 255, 0.05);
+            /* Fons gairebé transparent */
             box-shadow: 0 0 15px rgba(176, 141, 87, 0.2);
             transition: transform 0.3s ease;
         }
+
         .timer-display .time-item:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px rgba(176, 141, 87, 0.4);
         }
 
         .time-item .value {
-            font-size: 3.5em; /* Valor gran */
+            font-size: 3.5em;
+            /* Valor gran */
             font-weight: 700;
             line-height: 1;
-            color: var(--color-accent); /* El valor en color accent */
+            color: var(--color-accent);
+            /* El valor en color accent */
             transition: all 0.2s ease-out;
         }
-        
+
         .time-item small {
             font-size: 0.7em;
             font-weight: 300;
@@ -352,11 +412,11 @@
             margin-top: 10px;
             color: var(--color-text-light);
         }
-        
+
         /* DETALLS ESDEVENIMENT (CELEBRACIÓ/PROGRAMA) */
         .event-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 40px;
             margin-top: 50px;
             text-align: left;
@@ -364,36 +424,46 @@
 
         .event-item {
             /* Fons semi-transparent per veure el background del body */
-            background-color: var(--color-blanc-fons-transparent); 
+            background-color: var(--color-blanc-fons-transparent);
             color: var(--color-text-dark);
             padding: 35px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .event-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
         }
 
         .event-item i {
             font-size: 2.8em;
-            color: var(--color-accent); /* Icones en color accent */
+            color: var(--color-accent);
+            /* Icones en color accent */
             margin-bottom: 20px;
-            animation: pulse 2s infinite alternate; /* Efecte subtil d'animació */
+            animation: pulse 2s infinite alternate;
+            /* Efecte subtil d'animació */
         }
+
         @keyframes pulse {
-            from { transform: scale(1); opacity: 0.9; }
-            to { transform: scale(1.05); opacity: 1; }
+            from {
+                transform: scale(1);
+                opacity: 0.9;
+            }
+
+            to {
+                transform: scale(1.05);
+                opacity: 1;
+            }
         }
 
         .event-item h3 {
             font-family: var(--font-primary);
             font-size: 2em;
-            color: var(--color-granat);
+            color: var(--color-verd);
             margin-top: 0;
             margin-bottom: 10px;
             letter-spacing: 1px;
@@ -404,14 +474,14 @@
             font-family: var(--font-sans);
             font-weight: 700;
             margin-top: 20px;
-            color: var(--color-granat-light);
+            color: var(--color-verd-light);
             transition: color 0.3s ease;
         }
-        
+
         .location-link:hover {
             color: var(--color-accent);
         }
-        
+
         /* BOTONS */
         .btn {
             display: inline-block;
@@ -431,18 +501,19 @@
         .btn-primary {
             background-color: var(--color-accent);
             color: var(--color-text-light);
-            border: 2px solid var(--color-accent); 
+            border: 2px solid var(--color-accent);
             box-shadow: 0 8px 25px rgba(176, 141, 87, 0.3);
         }
 
         .btn-primary:hover {
-            background-color: var(--color-granat);
-            border-color: var(--color-granat);
-            transform: translateY(-3px); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            background-color: var(--color-verd);
+            border-color: var(--color-verd);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
-        
-        .btn-primary::after { /* Efecte de llampada elegant */
+
+        .btn-primary::after {
+            /* Efecte de llampada elegant */
             content: '';
             position: absolute;
             top: 0;
@@ -453,14 +524,14 @@
             transition: all 0.4s ease-in-out;
             transform: skewX(-20deg);
         }
-        
+
         .btn-primary:hover::after {
             left: 100%;
         }
 
         /* FOOTER */
         .footer {
-            background-color: var(--color-granat);
+            background-color: var(--color-verd);
             color: var(--color-text-light);
             padding: 35px;
             font-family: var(--font-sans);
@@ -470,23 +541,24 @@
 
         /* MEDIA QUERIES (ADAPTABILITAT) */
         @media (max-width: 900px) {
-            
+
             /* ================================================= */
             /* MODIFICACIÓ CLAU PER A LA FOTOPARELLA EN MÒBIL    */
             /* Per assegurar que la part superior de la imatge  */
             /* (on solen ser els rostres) es vegi, canviem la   */
             /* posició del fons a 'top center'.                  */
             /* ================================================= */
-            body {
-                /* background-size: cover; es manté del CSS global */
-                background-position: top center; /* CENTRA LA PART SUPERIOR (caps) */
+            #background-fixed {
+                background-position: top center;
+                /* CENTRA LA PART SUPERIOR (caps) */
             }
+
             /* ================================================= */
-            
+
             .navbar-links {
-                display: none;    
+                display: none;
             }
-            
+
             .navbar {
                 justify-content: center;
                 padding: 15px 20px;
@@ -500,11 +572,11 @@
                 font-size: 1.8em;
                 letter-spacing: 5px;
             }
-            
+
             .container {
                 padding: 70px 20px;
             }
-            
+
             .section-title {
                 font-size: 2.8em;
             }
@@ -512,11 +584,12 @@
             .timer-display {
                 font-size: 0.9em;
             }
-            
+
             .timer-display .time-item {
                 width: 85px;
                 margin: 0 8px;
             }
+
             .time-item .value {
                 font-size: 3em;
             }
@@ -527,16 +600,18 @@
         }
     </style>
 </head>
+
 <body>
-    
+    <div id="background-fixed"></div>
     <nav class="navbar">
         <a href="#inici" class="navbar-logo">
-            <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A" onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';" />
+            <img src="fotochia.jpg" class="logo-icon" alt="Inicial A & A"
+                onerror="this.onerror=null;this.src='https://placehold.co/30x30/b08d57/fff?text=A&A';" />
             Alba & Adrià
         </a>
         <ul class="navbar-links">
             <li><a href="#inici">Inici</a></li>
-                        <li><a href="#programa">Programa</a></li>
+            <li><a href="#programa">Programa</a></li>
             <li><a href="#transport">Transport</a></li>
             <li><a href="#rsvp">Assistència</a></li>
         </ul>
@@ -551,7 +626,7 @@
         </div>
     </header>
 
-    <section class="section section-granat reveal" id="compte">
+    <section class="section section-verd reveal" id="compte">
         <div class="container">
             <h2 class="section-title">Compte enrere</h2>
             <div id="timer" class="timer-display"></div>
@@ -561,15 +636,17 @@
     <section class="section section-blanc reveal" id="historia">
         <div class="container">
             <h2 class="section-title">Ho volem celebrar amb tu!</h2>
-            <p>Després de tants anys i tants moments, ha arribat el moment de segellar el nostre amor. Per a nosaltres, el més important d'aquest dia és compartir-lo amb vosaltres, les persones que heu estat al nostre costat. Prepareu-vos per riure, ballar i brindar! Gràcies per ser-hi sempre.</p>
+            <p>Després de tants anys i tants moments, ha arribat el moment de segellar el nostre amor. Per a nosaltres,
+                el més important d'aquest dia és compartir-lo amb vosaltres, les persones que heu estat al nostre
+                costat. Prepareu-vos per riure, ballar i brindar! Gràcies per ser-hi sempre.</p>
         </div>
     </section>
 
-    <section class="section section-granat reveal" id="programa">
+    <section class="section section-verd reveal" id="programa">
         <div class="container">
             <h2 class="section-title">El Programa del Dia</h2>
             <p>Tot l'esdeveniment tindrà lloc a la mateixa ubicació: un espai màgic al mig de la natura.</p>
-            
+
             <div class="event-grid">
                 <div class="event-item">
                     <i class="fas fa-ring"></i>
@@ -577,13 +654,14 @@
                     <p><strong>Hora:</strong> 17:30h</p>
                     <p>Començarem amb la part més emotiva, on ens donarem el "Sí, vull!".</p>
                 </div>
-                
+
                 <div class="event-item">
                     <i class="fas fa-champagne-glasses"></i>
                     <h3>Banquet & Festa</h3>
                     <p><strong>Lloc:</strong> El Dalmau</p>
                     <p>Masia Can Dalmau, 5, 08529 Barcelona</p>
-                    <a href="https://maps.app.goo.gl/ANx3SUFDKQHRBxpp7" target="_blank" class="location-link"><i class="fas fa-map-marker-alt"></i> Veure ubicació</a>
+                    <a href="https://maps.app.goo.gl/ANx3SUFDKQHRBxpp7" target="_blank" class="location-link"><i
+                            class="fas fa-map-marker-alt"></i> Veure ubicació</a>
                 </div>
             </div>
         </div>
@@ -593,17 +671,21 @@
         <div class="container">
             <h2 class="section-title">Transport</h2>
             <i class="fas fa-bus-simple" style="font-size: 3em; color: var(--color-accent); margin-bottom: 20px;"></i>
-            <p>Per facilitar-vos l'anada i la tornada, posarem a la vostra disposició dos autobúsos de cortesia amb sortida des de Vic, i tornada a la matinada.</p>
-            <p class="transport-note" style="font-weight: 700; color: var(--color-granat);">⚠ ATENCIÓ: Els horaris exactes i punts de recollida es publicaran aquí aproximadament 1 mes abans de l'enllaç.</p>
+            <p>Per facilitar-vos l'anada i la tornada, posarem a la vostra disposició dos autobúsos de cortesia amb
+                sortida des de Vic, i tornada a la matinada.</p>
+            <p class="transport-note" style="font-weight: 700; color: var(--color-verd);">⚠ ATENCIÓ: Els horaris exactes
+                i punts de recollida es publicaran aquí aproximadament 1 mes abans de l'enllaç.</p>
             <p>Si veniu amb cotxe, el Dalmau disposa de pàrquing.</p>
         </div>
     </section>
 
-    <section class="section section-granat reveal" id="rsvp">
+    <section class="section section-verd reveal" id="rsvp">
         <div class="container">
             <h2 class="section-title">Confirma la teva assistència</h2>
-            <i class="fas fa-envelope-open-text" style="font-size: 3em; color: var(--color-accent); margin-bottom: 10px;"></i>
-            <p>És molt important que ens confirmeu la vostra assistència abans de la data límit. Feu clic al botó i ompliu el formulari de Google Forms.</p>
+            <i class="fas fa-envelope-open-text"
+                style="font-size: 3em; color: var(--color-accent); margin-bottom: 10px;"></i>
+            <p>És molt important que ens confirmeu la vostra assistència abans de la data límit. Feu clic al botó i
+                ompliu el formulari de Google Forms.</p>
             <a href="[ENLLAÇ DEL GOOGLE FORM]" target="_blank" class="btn btn-primary">Confirma assistència</a>
         </div>
     </section>
@@ -615,7 +697,7 @@
     <script>
         const weddingDate = new Date("September 5, 2026 17:30:00").getTime();
         const timer = document.getElementById("timer");
-        
+
         // Funció d'actualització del temporitzador amb el nou format
         const updateTimer = () => {
             const now = new Date().getTime();
@@ -642,14 +724,14 @@
                 <div class="time-item"><div class="value">${pad(secs)}</div><small>Segons</small></div>
             `;
         };
-        
+
         // Inici del temporitzador
         const interval = setInterval(updateTimer, 1000);
         updateTimer(); // Executa una vegada immediatament per evitar el parpelleig
 
         // 1. Scroll suau i ajustat per la barra fixa
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener("click", function(e) {
+            anchor.addEventListener("click", function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute("href");
                 const targetElement = document.querySelector(targetId);
@@ -664,7 +746,7 @@
                 }
             });
         });
-        
+
         // 2. Efecte de Revelació (Reveal on Scroll)
         const revealElements = document.querySelectorAll('.reveal');
 
@@ -674,12 +756,12 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                     // Deixar d'observar un cop s'ha activat
-                    observer.unobserve(entry.target); 
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
             // Activa quan el 10% de l'element és visible
-            threshold: 0.1 
+            threshold: 0.1
         });
 
         revealElements.forEach(element => {
@@ -688,5 +770,6 @@
 
     </script>
 </body>
+
 </html>
 
